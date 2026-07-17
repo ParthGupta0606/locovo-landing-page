@@ -812,7 +812,7 @@ export default function Home() {
                   </h2>
                 </div>
                 <div className="space-y-4">
-                  <details className="bg-white rounded-2xl shadow-md p-6 group">
+                  <details className="bg-white rounded-2xl shadow-md p-6 group text-gray-500">
                     <summary className="cursor-pointer font-medium flex justify-between">
                       Is the platform live now?
                       <span>−</span>
@@ -829,7 +829,7 @@ export default function Home() {
                   ].map((question) => (
                   <details
                   key={question}
-                  className="bg-white rounded-2xl shadow-md p-6"
+                  className="bg-white rounded-2xl shadow-md p-6 text-gray-500"
                   >
                   <summary className="cursor-pointer font-medium flex justify-between">
                     {question}
