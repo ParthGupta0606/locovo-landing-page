@@ -29,7 +29,7 @@ export default function Home() {
         <main className="min-h-screen bg-[#F9F7F2] p-4 md:p-8">
             {/*Navbar */}
             <motion.nav
-            initial={{ y: -30, opacity: 0 }}
+            initial={{ y: -30, opacity: 0 }}            
             animate={{ y: 0, opacity: 1 }}
             transition={{ duration: 0.6 }}
             className="mx-auto max-w-7xl bg-white rounded-full px-8 py-4 shadow-sm flex items-center justify-between">
@@ -168,37 +168,73 @@ export default function Home() {
                     title:"Massage Therapy",
                     text:"Relaxation, recovery, and wellness-focused massage services at home.",
                     color: "#2B7A78",
-                    icon: <Hand size={40} className="text-[#2B7A78]" strokeWidth={1.5} />,
+                    icon: (
+                      <img
+                      src="/massage.svg"
+                      alt="Massage "
+                      className="w-15 h-15"
+                      />
+                    ),
                   },
                   {
                     title:"Beauty Services",
                     text:"Personal care and beauty treatments delivered with convenience.",
                     color: "#D89B32",
-                    icon: <Sparkles size={40} className="text-[#D89B32]" strokeWidth={1.5} />,
+                    icon: (
+                      <img
+                      src="/beauty.svg"
+                      alt="Beauty "
+                      className="w-15 h-15"
+                      />
+                    ),
                   },
                   {
                     title:"Hair Styling",
                     text:"At-home styling support for everyday needs and special occasions.",
                     color: "#A8B88A",
-                    icon: <Scissors size={40} className="text-[#A8B88A]" strokeWidth={1.5} />,
+                    icon: (
+                      <img
+                      src="/scissors.svg"
+                      alt="Scissors "
+                      className="w-15 h-15"
+                      />
+                    ),
                   },
                   {
                     title:"Skincare",
                     text:"Personalized skincare and facial wellness services.",
                     color: "#8A9B7A",
-                    icon: <Flower2 size={40} className="text-[#8A9B7A]" strokeWidth={1.5} />,
+                    icon: (
+                      <img
+                      src="/skincare.svg"
+                      alt="Skincare "
+                      className="w-15 h-15"
+                      />
+                    ),
                   },
                   {
                     title:"Nails",
                     text:"Convenient nail care services from experienced professionals.",
                     color: "#C4A78A",
-                    icon: <HeartHandshake size={40} className="text-[#C4A78A]" strokeWidth={1.5} />,
+                    icon: (
+                      <img
+                      src="/nails.svg"
+                      alt="Nails "
+                      className="w-20 h-20"
+                      />
+                    ),
                   },
                   {
                     title:"Future Services",
                     text:"Physiotherapy, chiropractic, yoga, personal training and more.",
                     color: "#9A8B7A",
-                    icon: <Activity size={40} className="text-[#9A8B7A]" strokeWidth={1.5} />,
+                    icon: (
+                      <img
+                      src="/future-service.svg"
+                      alt="Future Service "
+                      className="w-15 h-15"
+                      />
+                    ),
                   },
                 ].map((service,index)=>(
                    <motion.div
@@ -233,14 +269,15 @@ export default function Home() {
                 rotate: flowerRotate,
                 opacity: flowerOpacity,
               }}
-              className="absolute right-30 top-40">
-              < Flower size={80} strokeWidth={1.5}  className="text-[#E8A04A]"/>
+              className="absolute right-20 top-40">
+              <img
+              src="/flower.svg"
+              alt="Flower"
+              className="w-30 h-30"
+              />
 
               </motion.div>
             </section>
-
-
-
 
             <section className="relative mt-32 overflow-hidden bg-[#FBF8F2] py-24">
               <div className="mx-auto max-w-7xl px-6">
@@ -436,6 +473,273 @@ export default function Home() {
                 </div>
               </div>
             </section>
+
+            <section className="max-w-7xl mx-auto py-32">
+              <p className="text-sm uppercase tracking-wider text-[#2B7A78]">
+                WHY LOCOVO
+              </p>
+              <h2 className="text-5xl font-serif text-[#24423F] mt-4">
+                A Better way to access wellness <br /> at home.
+              </h2>
+              <div className="grid md:grid-cols-4 gap-6 mt-16">
+                <div className="bg-white rounded-t-[100px] rounded-b-[20px] p-8 text-center shadow-sm border border-[#9DD7D2]">
+                  <img
+                  src="/handshake.svg"
+                  alt="Handshake"
+                  className="mx-auto w-12 h-12"
+                  />
+                  <h3 className="font-semibold text-gray-700">Convenient</h3>
+                  <p className="text-sm text-gray-500 mt-3">
+                    Book wellness services without leaving home.
+                  </p>
+                </div>
+
+                <div className="bg-white rounded-t-[100px] rounded-b-[20px] p-8 text-center shadow-sm border border-[#9DD7D2]">
+                  <img
+                  src="/background.svg"
+                  alt="Background"
+                  className="mx-auto w-15 h-15"
+                  />
+                  <h3 className="font-semibold text-gray-700">Trust-focused</h3>
+                  <p className="text-sm text-gray-500 mt-3">
+                    Verified professionals and transparent onboarding.
+                  </p>
+                </div>
+
+                <div className="bg-white rounded-t-[100px] rounded-b-[20px] p-8 text-center shadow-sm border border-[#9DD7D2]">
+                  <img
+                  src="/human.svg"
+                  alt="Human"
+                  className="mx-auto w-12 h-12"
+                  />
+                  <h3 className="font-semibold text-gray-700">Human & personal</h3>
+                  <p className="text-sm text-gray-500 mt-3">
+                    Designed around meaningful interactions.
+                  </p>
+                </div>
+                <div className="bg-white rounded-t-[100px] rounded-b-[20px] p-8 text-center shadow-sm border border-[#9DD7D2]">
+                  <img
+                  src="/Building.svg"
+                  alt="Building"
+                  className="mx-auto w-12 h-12"
+                  />
+                  <h3 className="font-semibold text-gray-700">Built for Canada</h3>
+                  <p className ="text-sm text-gray-500 mt-3">
+                    Launching city-by-city across the country.
+                  </p>
+                </div>
+              </div>
+            </section>
+
+
+            <section className="relative max-w-7xl mx-auto py-32">
+              <img
+              src="flower-left.svg"
+              alt="Flower Left"
+              className="absolute left-0 top-1/4 -translate-y-1/2 w-120 h-60"
+              />
+              <img
+              src="/flower-right.svg"
+              alt="Flower Right"
+              className="absolute right-0 top-1/4 -translate-y-1/2 w-120 h-60"
+              />
+              <div className="max-w-4xl mx-auto text-center">
+                <p className="text-sm uppercase tracking-[0.2em] text-[#2B7A78]">
+                  Safety &  Verification
+
+                </p>
+                <h2 className="mt-4 text-5xl font-serif text-[#24423F] leading-tight">
+                  Safety and trust are built <br /> into the platform. 
+                </h2>
+                <p className="mt-6 text-gray-600">
+                  Before launching the marketplace, we're building a verification <br /> first foundation for both customers and providers.
+                </p>
+              </div>
+
+              <div className=" flex justify-center mt-8">
+                <button className=
+                "px-6 py-3 rounded-full bg-[#E8A04A] text-white font-medium hover:scale-105 transition" >
+                  Learn about Safety
+                </button>
+              </div>
+
+              <div className="grid md:grid-cols-3 gap-6 mt-16">
+                <div className="bg-white rounded-2xl p-6 shadow-sm">
+                  <div className="w-16 h-16 mx-auto mb-4 rounded-full bg-[#FFF1DE] flex items-center justify-center">
+                    <img
+                    src="/man.svg"
+                    alt="Man"
+                    className="mx-auto w-12 h-12"
+                    />
+                  </div>
+                  
+                  <h3 className="font-semibold text-gray-500"> Professional background review</h3>
+                </div>
+
+                <div className="bg-white rounded-2xl p-6 shadow-sm">
+                  <div className="w-16 h-16 mx-auto mb-4 rounded-full bg-[#E8F5F3] flex items-center justify-center">
+                    <img
+                    src="/Review.svg"
+                    alt="Review"
+                    className="mx-auto w-13 h-13"
+                    />
+                  </div>
+                  
+                  <h3 className="font-semibold text-gray-500"> Ratings & reviews after marketplace launch.</h3>
+                </div>
+                <div className="bg-white rounded-2xl p-6 shadow-sm">
+                  <div className="w-16 h-16 mx-auto mb-4 rounded-full bg-[#E7EFE3] flex items-center justify-center">
+                    <img
+                    src="/certificate.svg"
+                    alt="Certificate"
+                    className="mx-auto w-12 h-12"
+                    />
+                  </div>
+                  
+                  <h3 className="font-semibold text-gray-500"> License $ Certifications checks</h3>
+                </div>
+
+                <div className="bg-white rounded-2xl p-6 shadow-sm">
+                  <div className="w-16 h-16 mx-auto mb-4 rounded-full bg-[#FFF1DE] flex items-center justify-center">
+                    <img
+                    src="/support.svg"
+                    alt="Support"
+                    className="mx-auto w-12 h-12"
+                    />
+                  </div>
+                  
+                  <h3 className="font-semibold text-gray-500"> Support $ Escalation processes</h3>
+                </div>
+                
+                <div className="bg-white rounded-2xl p-6 shadow-sm">
+                  <div className="w-16 h-16 mx-auto mb-4 rounded-full bg-[#E8F5F3] flex items-center justify-center">
+                    <img
+                    src="/verification.svg"
+                    alt="Verification"
+                    className="mx-auto w-12 h-12"
+                    />
+                  </div>
+                  
+                  <h3 className="font-semibold text-gray-500">Identity Verification </h3>
+                </div>
+
+                <div className="bg-white rounded-2xl p-6 shadow-sm">
+                  <div className="w-16 h-16 mx-auto mb-4 rounded-full bg-[#E7EFE3] flex items-center justify-center">
+                    <img
+                    src="/insurance.svg"
+                    alt="Insurance"
+                    className="mx-auto w-12 h-12"
+                    />
+                  </div>
+                  
+                  <h3 className="font-semibold text-gray-500">Insurance details where applicable</h3>
+                </div>
+              </div>
+            </section>
+
+
+            <section className="bg-[#E7EFE3] py-24">
+              <div className="max-w-7xl mx-auto px-6">
+
+                <div className="grid lg:grid-cols-2 gap-16 items-center">
+                  <div>
+
+                    <div className="flex items-center gap-3">
+                      <div className="w-12 h-[3px] bg-[#E8A04A] rounded-full"></div>
+                      <p className="text-sm uppercase tracking-[0.2em] text-[#2B7A78]">
+                        Launch Cities
+                      </p>
+                    </div>
+                    <h2 className="text-5xl lg:text-6xl font-serif leading-tight text-[#24423F] mt-4">
+                      Where should we launch <br /> first?
+                    </h2>
+
+                    <p className="mt-6 text-gray-600 max-w-lg leading-relaxed">
+                      Join early access and tell us which city you're located in.
+                      Your interest will help decide our first launch regions.
+                    </p>
+                    <div className="flex flex-wrap gap-4 mt-10">
+                      <div className="px-5 py-2 bg-white rounded-full text-[#24423F] font-medium transition-all duration-300 hover:bg-[#E8A04A] hover:text-white hover:-translate-y-1 cursor-pointer">
+                        Toronto                        </div>
+                      <div className="px-5 py-2 bg-white rounded-full text-[#24423F] font-medium transition-all duration-300 hover:bg-[#E8A04A] hover:text-white hover:-translate-y-1 cursor-pointer">
+                        Vancouver
+                      </div>
+                      <div className="px-5 py-2 bg-white rounded-full text-[#24423F] font-medium transition-all duration-300 hover:bg-[#E8A04A] hover:text-white hover:-translate-y-1 cursor-pointer">
+                        Calgary
+                      </div>
+                      <div className="px-5 py-2 bg-white rounded-full text-[#24423F] font-medium transition-all duration-300 hover:bg-[#E8A04A] hover:text-white hover:-translate-y-1 cursor-pointer">
+                        Ottawa
+                      </div>
+                      <div className="px-5 py-2 bg-white rounded-full text-[#24423F] font-medium transition-all duration-300 hover:bg-[#E8A04A] hover:text-white hover:-translate-y-1 cursor-pointer">
+                        Montreal
+                      </div>
+                      <div className="px-5 py-2 bg-white rounded-full text-[#24423F] font-medium transition-all duration-300 hover:bg-[#E8A04A] hover:text-white hover:-translate-y-1 cursor-pointer">
+                        Edmonton
+                      </div>
+                      <div className="px-5 py-2 bg-white rounded-full text-[#24423F] font-medium transition-all duration-300 hover:bg-[#E8A04A] hover:text-white hover:-translate-y-1 cursor-pointer">
+                        + your city
+                      </div>
+                    </div>
+                  </div>
+                  <div className="bg-white rounded-[32px] p-8 shadow-sm min-h-[450px]">
+                    <div className="grid grid-cols-2 gap-4">
+                      <div>
+                        <label className="block text-sm font-medium text-[#24423F] mb-2">
+                          Province 
+                        </label>
+                        <input 
+                        type="text"
+                        placeholder="select your province"
+                        className="w-full px-4 py-4 rounded-2xl border border-gray-200 bg-[#FAF9F6] text-[#24423F] " />
+                      </div>
+                      <div>
+                        <label className="block text-sm font-medium text-[#24423F] mb-2">
+                          City
+                        </label>
+                        <input 
+                        type="text"
+                        placeholder="e.g. Toronto"
+                        className="w-full px-4 py-4 rounded-2xl border border-gray-200 bg-[#FAF9F6] text-[#24423F] " />
+
+                      </div>
+                      <div className="mt-5">
+                        <label className="block text-sm font-medium text-[#24423F] mb-2">
+                          Email
+                        </label>
+                        <input 
+                        type="email"
+                        placeholder="you@gmail.com"
+                        className="w-full px-4 py-4 rounded-2xl border border-gray-200 bg-[#FAF9F6] text-[#24423F] " />
+                      </div>
+                      <div className="mt-5">
+                        <label className="block text-sm font-medium text-[#24423F] mb-2">
+                          Service interest
+                        </label>
+                        <input 
+                        type="text"
+                        placeholder="Choose a service"
+                        className="w-full px-4 py-4 rounded-2xl border border-gray-200 bg-[#FAF9F6] text-[#24423F] " />
+                      </div>
+
+                      <div className="flex items-center gap-3 mt-8">
+                        <input 
+                        type="checkbox"
+                        className="w-5 h-5 accent-#2B7A78]" />
+                        <p className="text-sm text-gray-600">
+                          I agree to receive updates about launch, availability, and early access.
+                        </p>
+                      </div>
+                    </div>
+                    <button 
+                    className=" w-full mt-8 py-4 rounded-full bg-[#2B7A78] text-white font-semibold shadow-lg hover:scale-[1.02] transition-all duration-300">
+                      Join early access
+                    </button>
+                    <h2 className="w-full px-4 py-4 text-gray-400">Free to join. No spam — just a launch notification for your city.</h2>
+                  </div>
+                </div>
+              </div>
+            </section>
         </main>
-    );
+    )
+  
 }
