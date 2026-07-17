@@ -740,20 +740,20 @@ export default function Home() {
               </div>
             </section>
 
-            <section className="bg-[#F8F6F1] py-24 relative overflow-hidden">
+            <section className="bg-[#E8E3D8] py-24 relative overflow-hidden">
               <div className="max-w-7xl mx-auto px-6">
                 <div className="grid lg:grid-cols-2 gap-16 items-center">
 
                   <div className="relative">
-                    <div className="absolute -left-24 -top-16">
+                    <div className="absolute -left-45 -top-16">
                       <div className="relative w-48 h-64">
                         <div className="absolute top-0 left-0 pointer-events-none">
-                          <div className="relative h-98 w-44">
+                          <div className="relative h-104 w-50">
                             <div className="absolute inset-0 rounded-tr-full border-r-[20px] border-t-[20px] border-[#A6B88C]"/>
                           </div>
                         </div>
                         <div className="absolute top-6 left-0 pointer-events-none">
-                          <div className="relative h-92 w-38">
+                          <div className="relative h-98 w-44">
                             <div className="absolute inset-0 rounded-tr-full border-r-[20px] border-t-[20px] border-[#F2C6B6]"/>
                           </div>
                         </div>
@@ -798,6 +798,9 @@ export default function Home() {
                 </div>
               </div>
             </section>
+
+
+          
             <section className="py-24 bg-cover bg-center" style={{ backgroundImage: "url('/faq-pattern.png')", }}>
               <div className="max-w-4xl mx-auto px-6">
                 <div className="text-center mb-12 ">
@@ -812,12 +815,14 @@ export default function Home() {
                   </h2>
                 </div>
                 <div className="space-y-4">
-                  <details className="bg-white rounded-2xl shadow-md p-6 group text-gray-500">
-                    <summary className="cursor-pointer font-medium flex justify-between">
-                      Is the platform live now?
-                      <span>−</span>
+                  <details open className="bg-white rounded-2xl shadow-md p-6 group ">
+                    <summary className="flex justify-between items-center cursor-pointer list-none">
+                      <h3 className="font-medium text-gray-700">
+                        Is the platform live now?
+                      </h3>
+                      <span className="text-lg text-gray-700">x</span>
                     </summary>
-                    <p className="mt-4 text-gray-600">
+                    <p className="mt-4 text-gray-500 leading-relaxed">
                       Not yet. This is an early access website to understand demand and prepare for launch.
                     </p>
                   </details>
