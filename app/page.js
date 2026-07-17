@@ -739,6 +739,107 @@ export default function Home() {
                 </div>
               </div>
             </section>
+
+            <section className="bg-[#F8F6F1] py-24 relative overflow-hidden">
+              <div className="max-w-7xl mx-auto px-6">
+                <div className="grid lg:grid-cols-2 gap-16 items-center">
+
+                  <div className="relative">
+                    <div className="absolute -left-24 -top-16">
+                      <div className="relative w-48 h-64">
+                        <div className="absolute top-0 left-0 pointer-events-none">
+                          <div className="relative h-98 w-44">
+                            <div className="absolute inset-0 rounded-tr-full border-r-[20px] border-t-[20px] border-[#A6B88C]"/>
+                          </div>
+                        </div>
+                        <div className="absolute top-6 left-0 pointer-events-none">
+                          <div className="relative h-92 w-38">
+                            <div className="absolute inset-0 rounded-tr-full border-r-[20px] border-t-[20px] border-[#F2C6B6]"/>
+                          </div>
+                        </div>
+                        <img 
+                        src="/flower.svg"
+                        alt="Flower"
+                        className="absolute top-0 left-26 w-30"/>
+                      </div>
+                    </div>
+                    <div className="grid grid-cols-2 gap-4 max-w-md ml-24 text-gray-700">
+                      {[
+                        "Reach new customers",
+                        "Build your professional profile",
+                        "Work on a flexible schedule",
+                        "Join before public launch",
+                      ].map((item) => (
+                        <div key={item} className="bg-white rounded-2xl shadow-md p-5 text-center text-sm font-medium">
+                          {item}
+                        </div>
+                      ))}
+                      <div className="col-span-2 bg-white rounded-2xl shadow-md p-5 text-center text-sm font-medium">
+                        Be part of a safety-first marketplace
+                      </div>
+                    </div>
+                  </div>
+
+                  <div className="text-center lg:text-left max-w-md mx-auto">
+                    <p className="uppercase tracking-[0.25em] text-[#6E9C8D] text-xs mb-4">
+                      For Wellness Professionals
+                    </p>
+                    <h2 className="text-5xl font-serif text-[#23443E] mb-6">
+                      Are you a wellness professional?
+                    </h2>
+                    <p className="text-gray-500 mb-8">
+                      Join early and help shape a trusted at-home wellness 
+                      marketplace in Canada.
+                    </p>
+                    <button className="bg-[#2F7C73] hover:bg-[#27675F] text-white px-8 py-4 rounded-full transition">
+                      Become an early provider
+                    </button>
+                  </div>
+                </div>
+              </div>
+            </section>
+            <section className="py-24 bg-cover bg-center" style={{ backgroundImage: "url('/faq-pattern.png')", }}>
+              <div className="max-w-4xl mx-auto px-6">
+                <div className="text-center mb-12 ">
+                  <div className="flex items-center justify-center gap-3 mb-3">
+                    <div className="w-12 h-[3px] bg-[#E8A04A] rounded-full"></div>
+                  <p className="uppercase tracking-[0.45em] text-[#8BA18E] text-xs mb-3">
+                    FAQ
+                  </p>
+                  </div>
+                  <h2 className="text-5xl font-serif text-[#23443E]">
+                    Questions, answered.
+                  </h2>
+                </div>
+                <div className="space-y-4">
+                  <details className="bg-white rounded-2xl shadow-md p-6 group">
+                    <summary className="cursor-pointer font-medium flex justify-between">
+                      Is the platform live now?
+                      <span>−</span>
+                    </summary>
+                    <p className="mt-4 text-gray-600">
+                      Not yet. This is an early access website to understand demand and prepare for launch.
+                    </p>
+                  </details>
+                  {[ 
+                    "Which cities will you launch in?",
+                    "Are providers verified?",
+                    "Can professionals apply now?",
+                    "Is joining early access free?",
+                  ].map((question) => (
+                  <details
+                  key={question}
+                  className="bg-white rounded-2xl shadow-md p-6"
+                  >
+                  <summary className="cursor-pointer font-medium flex justify-between">
+                    {question}
+                    <span>+</span>
+                    </summary>
+                    </details>
+                  ))}
+                </div>
+              </div>
+            </section>
         </main>
     )
   
