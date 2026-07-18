@@ -26,7 +26,7 @@ export default function Home() {
 
   
     return (
-        <main className="min-h-screen bg-[#F9F7F2] p-4 md:p-8">
+      <main className="min-h-screen bg-[#F9F7F2] p-4 md:p-8">
             {/*Navbar */}
             <motion.nav
             initial={{ y: -30, opacity: 0 }}            
@@ -801,7 +801,8 @@ export default function Home() {
 
 
           
-            <section className="py-24 bg-cover bg-center" style={{ backgroundImage: "url('/faq-pattern.png')", }}>
+            <section className="py-24 bg-cover bg-center" style={{ background: ` linear-gradient( 180deg, #F8F6F1 0%, #cfe5a2 100% ) `, }}>
+              <div className="absolute inset-0 opacity-10" style={{ backgroundImage: "/leaf-top-left.svg", backgroundRepeat: "repeat", backgroundSize: "250px",}}/>
               <div className="max-w-4xl mx-auto px-6">
                 <div className="text-center mb-12 ">
                   <div className="flex items-center justify-center gap-3 mb-3">
@@ -845,7 +846,197 @@ export default function Home() {
                 </div>
               </div>
             </section>
-        </main>
+
+
+            <section className="relative bg-[#F8F6F1] py-20 overflow-hidden rounded-t-3xl">
+              <div className="text-center mb-16">
+                <h2 className="text-5xl font-serif text-[#23443E] leading-none">
+                  Wellness, your way.<br /> Coming soon.
+                </h2>
+                <p className="mt-4 text-gray-500 max-w-md mx-auto">
+                  Personalized wellness services at home and
+                  exclusive experiences at premium destinations.
+                </p>
+              </div>
+              <div className="w-full max-w-4xl mx-auto">
+                <div className="grid lg:grid-cols-[1fr_auto_1fr] items-center gap-12">
+
+                  <div className="text-center">
+                    <div className="w-14 h-14 rounded-full bg-[#E9F0E9] mx-auto mb-6 flex items-center justify-center">
+                      <img
+                      src="/human-icon.svg"
+                      alt=""
+                      />
+                    </div>
+                    <h3 className="font-semibold text-2xl text-[#23443E]">
+                      LOOKING FOR A <br /> WELLNESS SERVICE?
+                    </h3>
+                    <p className="text-gray-500 mt-4">
+                      Be the first to access personalized
+                      wellness services and exclusive offers.
+                    </p>
+                    <button className="mt-8 bg-[#2F7C73] text-white px-10 py-4 rounded-full">
+                      Join early access
+                    </button>
+                    <p className="text-xs text-gray-400 mt-4">
+                      ✓ No spam. Just updates that matter.
+                    </p>
+                  </div>
+  
+                  <div className="hidden lg:flex flex-col items-center">
+                    <div className="h-40 w-px bg-[#CFC8BC]" />
+                    
+                    <div className="w-10 h-10 rounded-full border bg-white flex items-center justify-center text-xs">
+                      OR
+                    </div>
+                    <div className="h-40 w-px bg-[#CFC8BC]" />
+                  </div>
+
+                  <div className="text-center">
+                    <div className="w-14 h-14 rounded-full bg-[#F8E9C9] mx-auto mb-6 flex items-center justify-center">
+                      <img
+                      src="/suitcase.svg"
+                      alt=""
+                      />
+                    </div>
+                    <h3 className="font-semibold text-2xl text-[#23443E]">
+                      LOOKING FOR A <br /> WELLNESS SERVICE?
+                    </h3>
+  
+                    <p className="text-gray-500 mt-4">
+                      Be the first to access personalized
+                      wellness services and exclusive offers.
+                    </p>
+  
+                    <button className="mt-8 bg-[#D8A03B] text-white px-10 py-4 rounded-full">
+                      Become a provider
+                    </button>
+  
+                    <p className="text-xs text-gray-400 mt-4">
+                      ✓ Quick application. We'll be in touch.
+                    </p>
+                  </div>
+                </div>
+             </div>
+                  
+              <Image
+              src="/flower3.svg"
+              alt=""
+              width={180}
+              height={180}
+              className="absolute bottom-0 left-30 opacity-80" />
+              <Image
+              src="/leaf-left.svg"
+              alt=""
+              width={180}
+              height={180}
+              className="absolute bottom-0 right-320 opacity-80" />
+              <Image
+              src="/grass.svg"
+              alt=""
+              width={180}
+              height={180}
+              className="absolute bottom-0 left-10 opacity-100" />
+              <Image src="/leaf-right.svg" 
+              alt=""
+              width={220}
+              height={220}
+              className="absolute bottom-0 left-310 opacity-100" />
+              <Image src="/grass-right.svg" 
+              alt=""
+              width={190}
+              height={120}
+              className="absolute bottom-0 left-320 opacity-100" />
+
+            </section>
+
+            {/* Footer*/}
+            <footer className="bg-[#0F3432] text-white">
+              <div className="max-w-7xl mx-auto px-8 py-16">
+                {/* Top Footer */}
+                <div className="grid md:grid-cols-[2fr_1fr_1fr_1fr_1fr] gap-10">
+                  {/* Brand */}
+                  <div>
+                    <div className="flex items-center gap-3 mb-4">
+                      <Image src="/logo.svg" alt="Locovo" width={36} height={36} />
+                      <span className="text-2xl font-semibold">LOCOVO</span>
+                    </div>
+
+                    <p className="text-sm text-[#C6D2CE] max-w-xs">
+                      Join the early access list and help decide
+                      where Locovo launches first.
+                    </p>
+                  </div>
+
+                  {/* Company */}
+                  <div>
+                    <h4 className="text-[#E8A04A] text-sm font-semibold mb-4">
+                      Company
+                    </h4>
+
+                    <ul className="space-y-3 text-[#C6D2CE] text-sm">
+                      <li><a href="#">About</a></li>
+                      <li><a href="#">Contact</a></li>
+                    </ul>
+                  </div>
+
+                  {/* Policies */}
+                  <div>
+                    <h4 className="text-[#E8A04A] text-sm font-semibold mb-4">
+                      Policies
+                    </h4>
+
+                    <ul className="space-y-3 text-[#C6D2CE] text-sm">
+                      <li><a href="#">Privacy Policy</a></li>
+                      <li><a href="#">Terms of Service</a></li>
+                    </ul>
+                  </div>
+
+                  {/* Trust */}
+                  <div>
+                    <h4 className="text-[#E8A04A] text-sm font-semibold mb-4">
+                     Trust
+                    </h4>
+ 
+                    <ul className="space-y-3 text-[#C6D2CE] text-sm">
+                      <li><a href="#">Safety & Verification</a></li>
+                    </ul>
+                  </div>
+  
+                  {/* Social */}
+                  <div>
+                    <h4 className="text-[#E8A04A] text-sm font-semibold mb-4">
+                      Social Links
+                    </h4>
+  
+                    <div className="flex gap-4 text-xl">
+                      <i className="ri-instagram-line"></i>
+                      <i className="ri-whatsapp-line"></i>
+                      <i className="ri-twitter-x-line"></i>
+                      <i className="ri-linkedin-box-line"></i>
+                    </div>
+                  </div>
+    
+                </div>
+ 
+              {/* Divider */}
+                <div className="border-t border-white/10 mt-12 pt-8 flex flex-col md:flex-row justify-between items-center gap-4">
+                <p className="text-[#C6D2CE] text-sm">
+                  Product experience powered by
+                  <span className="ml-2 tracking-[0.35em] text-white">
+                    STRIX
+                  </span>
+                </p>
+                
+                <p className="text-[#C6D2CE] text-sm">
+                  © 2026 Locovo. All rights reserved.
+                </p>
+                </div>
+    
+              </div>
+            </footer>
+           
+      </main>
     )
   
 }
