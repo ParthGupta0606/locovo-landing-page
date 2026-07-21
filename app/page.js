@@ -3,15 +3,8 @@
 import { motion, useScroll, useTransform } from "framer-motion";
 import {useRef } from "react";
 import Image from "next/image";
-import {
-  Hand,
-  Scissors,
-  Sparkles,
-  HeartHandshake,
-  Flower,
-  Flower2,
-  Activity,
-} from "lucide-react";
+import Link from "next/link";
+
 export default function Home() {
   const serviceRef = useRef(null);
   const { scrollYProgress } = useScroll(
@@ -39,9 +32,9 @@ export default function Home() {
                     LOCOVO
                 </div>
                 <div className="hidden lg:flex gap-8 text-sm text-gray-700">
-                    <a href="#">Home</a>
-                    <a href="#">About</a>
-                    <a href="#">How it works</a>
+                    <Link href="/" className="hover:scale-110 transition-all duration-300"> Home </Link>
+                    <Link href="/about" className="nav-link">About </Link>
+                    <Link href="how-it-works" className="nav-link">How it works</Link>
                     <a href="#">Services</a>
                     <a href="#">For Customers</a>
                     <a href="#">For Professionals</a>
@@ -801,7 +794,12 @@ export default function Home() {
 
 
           
-            <section className="py-24 bg-cover bg-center" style={{ background: ` linear-gradient( 180deg, #F8F6F1 0%, #cfe5a2 100% ) `, }}>
+            <section className="py-24 mt-16"
+            style={{
+              backgroundImage: "url('/bg.svg')",
+              backgroundRepeat: "repeat", 
+              backgroundSize: "33.33% auto",
+            }}>
               <div className="absolute inset-0 opacity-10" style={{ backgroundImage: "/leaf-top-left.svg", backgroundRepeat: "repeat", backgroundSize: "250px",}}/>
               <div className="max-w-4xl mx-auto px-6">
                 <div className="text-center mb-12 ">
