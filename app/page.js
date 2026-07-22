@@ -1,5 +1,4 @@
 "use client";
-
 import { motion, useScroll, useTransform } from "framer-motion";
 import { useRef } from "react";
 import Image from "next/image";
@@ -17,7 +16,6 @@ export default function Home() {
   const flowerRotate = useTransform(scrollYProgress, [0, 0.35, 0.8, 1], [-360, 0, 0, 360]);
   const flowerOpacity = useTransform(scrollYProgress, [0, 0.2, 0.8, 1], [0, 1, 1, 0]);
 
-
   return (
     <main className="min-h-screen bg-[#F9F7F2] p-4 md:p-8">
       {/*Navbar */}
@@ -25,18 +23,18 @@ export default function Home() {
         initial={{ y: -30, opacity: 0 }}
         animate={{ y: 0, opacity: 1 }}
         transition={{ duration: 0.6 }}
-        className="mx-auto max-w-7xl bg-white rounded-full px-8 py-4 shadow-sm flex items-center justify-between"
+        className="relative z-[50] mx-auto max-w-7xl bg-white  rounded-full px-8 py-4 shadow-sm flex items-center justify-between"
       >
         <div className="text-2xl font-bold text-[#2B7A78]">
           LOCOVO
         </div>
         <div className="hidden lg:flex gap-8 text-sm text-gray-700">
           <Link href="/" className="hover:scale-110 transition-all duration-300"> Home </Link>
-          <Link href="/about" className="nav-link">About </Link>
+          <Link href="/about" className="hover:scale-110 transition-all duration-300">About </Link>
           <Link href="/how-it-works" className=" hover:scale-110 transition-all duration-300">How it works</Link>
-          <Link href="/services" className="nav-link">Services</Link>
-          <a href="#">For Customers</a>
-          <a href="#">For Professionals</a>
+          <Link href="/services" className="hover:scale-110 transition-all duration-300">Services</Link>
+          <Link href="/customers" className="hover:scale-110 transition-all duration-300">For Customers</Link>
+          <Link href="/safety" className="hover:scale-110 transition-all duration-300">For Professionals</Link>
         </div>
         <div className="hidden lg:flex gap-4">
           <button className="px-5 py-2 rounded-full bg-[#2B7A78] text-white text-sm">
@@ -721,12 +719,12 @@ export default function Home() {
                 <div className="relative w-48 h-64">
                   <div className="absolute top-0 left-0 pointer-events-none">
                     <div className="relative h-104 w-50">
-                      <div className="absolute inset-0 rounded-tr-full border-r-[20px] border-t-[20px] border-[#A6B88C]" />
+                      <div className="absolute inset-0 pointer-events-none rounded-tr-full border-r-[20px] border-t-[20px] border-[#A6B88C]" />
                     </div>
                   </div>
                   <div className="absolute top-6 left-0 pointer-events-none">
                     <div className="relative h-98 w-44">
-                      <div className="absolute inset-0 rounded-tr-full border-r-[20px] border-t-[20px] border-[#F2C6B6]" />
+                      <div className="absolute inset-0 pointer-events-none rounded-tr-full border-r-[20px] border-t-[20px] border-[#F2C6B6]" />
                     </div>
                   </div>
                   <img
@@ -779,7 +777,7 @@ export default function Home() {
           backgroundRepeat: "repeat",
           backgroundSize: "33.33% auto",
         }}>
-        <div className="absolute inset-0 opacity-10" style={{ backgroundImage: "url('/leaf-top-left.svg')", backgroundRepeat: "repeat", backgroundSize: "250px", }} />
+        <div className="absolute inset-0  pointer-events-none opacity-10" style={{ backgroundImage: "url('/leaf-top-left.svg')", backgroundRepeat: "repeat", backgroundSize: "250px", }} />
         <div className="max-w-4xl mx-auto px-6">
           <div className="text-center mb-12 ">
             <div className="flex items-center justify-center gap-3 mb-3">

@@ -1,5 +1,3 @@
-// app/services/page.js
-
 "use client";
 
 import { motion } from "framer-motion";
@@ -20,10 +18,10 @@ export default function Services() {
         <div className="hidden lg:flex gap-8 text-sm text-gray-700">
           <Link href="/" className="hover:scale-110 transition-all duration-300"> Home </Link>
           <Link href="/about" className="nav-link">About </Link>
-          <Link href="/how-it-works">How it works</Link>
+          <Link href="/how-it-works" className="hover:scale-110 transition-all duration-300">How it works</Link>
           <Link href="/services" className="hover:scale-110 transition-all duration-300">Services</Link>
-          <a href="#">For Customers</a>
-          <a href="#">For Professionals</a>
+          <Link href="/customers" className="hover:scale-110 transition-all duration-300">For Customers</Link>
+          <Link href="/safety" className="hover:scale-110 transition-all duration-300">For Professionals</Link>
         </div>
         <div className="hidden lg:flex gap-4">
           <button className="px-5 py-2 rounded-full bg-[#2B7A78] text-white text-sm">
@@ -34,7 +32,9 @@ export default function Services() {
           </button>
         </div>
       </motion.nav>
-      <section className="py-24 bg-[#F9F7F2]">
+
+
+      <section className="py-24  bg-gradient-to-b bg-[#F2E4D0] via-[#F7F3EB] to-white">
         <div className="max-w-7xl mx-auto px-6">
 
           {/* Heading */}

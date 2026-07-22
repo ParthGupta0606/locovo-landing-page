@@ -21,8 +21,8 @@ export default function howitworks() {
                     <Link href="/about" className="hover:scale-110 transition-all duration-300">About </Link>
                     <Link href="/how-it-works" className="hover:scale-110 transition-all duration-300">How it works</Link>
                     <Link href="/services" className="hover:scale-110 transition-all duration-300">Services</Link>
-                    <a href="#">For Customers</a>
-                    <a href="#">For Professionals</a>
+                    <Link href="/customers" className="hover:scale-110 transition-all duration-300">For Customers</Link>
+                    <Link href="/safety" className="hover:scale-110 transition-all duration-300">For Professionals</Link>
 
                 </div>
                 <div className="hidden lg:flex gap-4">
@@ -34,7 +34,12 @@ export default function howitworks() {
                     </button>
                 </div>
             </motion.nav>
-            <section className="relative overflow-hidden">
+            <section className="relative overflow-hidden py-24 bg-gradient-to-b from-[#EFD6B0] via-[#F7F3EB] to-white">
+                <img
+                    src="/stem.svg"
+                    alt="Stem Right"
+                    className="absolute right-0 top-1/4 -translate-y-1/2 w-100 h-80"
+                />
                 <div className="max-w-7xl mx-auto px-6 py-24">
                     <div className="text-center max-w-4xl mx-auto">
                         <p className="text-[#C79A4A] font-medium mb-6">
