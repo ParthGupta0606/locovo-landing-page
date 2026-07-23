@@ -36,13 +36,15 @@ export default function Home() {
           <Link href="/customers" className="hover:scale-110 transition-all duration-300">For Customers</Link>
           <Link href="/safety" className="hover:scale-110 transition-all duration-300">For Professionals</Link>
         </div>
-        <div className="hidden lg:flex gap-4">
+        <div className="hidden lg:flex gap-4 ">
           <button className="px-5 py-2 rounded-full bg-[#2B7A78] text-white text-sm">
             Join the waitlist
           </button>
+          <Link href={"/provider"}>
           <button className="px-5 py-2 rounded-full bg-[#D8A44D] text-white text-sm">
             Become a provider
           </button>
+          </Link>
         </div>
       </motion.nav>
 
@@ -69,7 +71,7 @@ export default function Home() {
             </p>
             <div className="flex flex-wrap gap-4 mt-10">
               <button className="px-7 py-3 rounded-full bg-[#2B7A78] text-white font-medium"> Join early access   </button>
-              <button className="px-7 py-3 rounded-full bg-[#D8A44D] text-white font-medium"> Become a provider   </button>
+              <Link href={"/provider"}><button className="px-7 py-3 rounded-full bg-[#D8A44D] text-white font-medium"> Become a provider   </button></Link>
             </div>
             <p className="mt-4 text-sm text-gray-500"> • Be among the first to know when we launch in your city. </p>
           </motion.div>
