@@ -7,7 +7,7 @@ import Link from "next/link";
 import { Work_Sans } from "next/font/google";
 export default function howitworks() {
     return (
-        <main className="min-h-screen  p-4 md:p-8">
+        <main className="min-h-screen  p-4 md:p-8 ">
             <motion.nav
                 initial={{ y: -30, opacity: 0 }}
                 animate={{ y: 0, opacity: 1 }}

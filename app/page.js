@@ -88,12 +88,12 @@ export default function Home() {
               ease: "easeInOut",
             }}
             className="flex justify-center">
-            <div className="relative w-full max-w-lg aspect-square rounded-3xl p-6">
+            <div className="relative w-full max-w-lg aspect-square rounded-3xl p-6 rounded-15px ">
               <Image
-                src="/illustration.svg"
+                src="/illustrationbg.svg"
                 alt="Illustration"
                 fill
-                className="object-contain p-6"
+                className="object-contain p-7"
                 priority />
             </div>
           </motion.div>
@@ -537,10 +537,11 @@ export default function Home() {
         </div>
 
         <div className=" flex justify-center mt-8">
-          <button className=
+          <Link href={"/safety"}><button className=
             "px-6 py-3 rounded-full bg-[#E8A04A] text-white font-medium hover:scale-105 transition" >
             Learn about Safety
           </button>
+          </Link>
         </div>
 
         <div className="grid md:grid-cols-3 gap-6 mt-16">

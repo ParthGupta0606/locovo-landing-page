@@ -6,7 +6,7 @@ import Link from "next/link";
 export default function Safety() {
     return (
 
-        <main className="min-h-screen bg-[#F9F7F2]">
+        <main className="min-h-screen bg-gradient-to-b bg-[#F7F3EB] ">
             {/* Navbar */}
             <motion.nav
                 initial={{ y: -30, opacity: 0 }}
@@ -35,7 +35,7 @@ export default function Safety() {
                     </Link>
                 </div>
             </motion.nav>
-            <section className="py-24 bg-gradient-to-b bg-[#F2E4D0] via-[#F7F3EB] to-white">
+            <section className="py-24 bg-gradient-to-b bg-[#F2E4D0]  to-[#F7F3EB]">
                 <div className="max-w-6xl mx-auto px-6 text-center">
 
                     <h1 className="text-6xl font-serif text-[#143B35] leading-tight">
@@ -51,7 +51,7 @@ export default function Safety() {
 
                 </div>
             </section>
-            <section className="py-16 bg-[#F6EBDD]">
+            <section className="py-16 ">
                 <div className="max-w-6xl mx-auto px-6">
 
                     <h2 className="text-center text-5xl font-serif text-[#143B35] mb-12">
