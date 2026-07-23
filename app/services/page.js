@@ -24,9 +24,11 @@ export default function Services() {
           <Link href="/professional" className="hover:scale-110 transition-all duration-300">For Professionals</Link>
         </div>
         <div className="hidden lg:flex gap-4">
-          <button className="px-5 py-2 rounded-full bg-[#2B7A78] text-white text-sm">
-            Join the waitlist
-          </button>
+          <Link href={"/early-access"}>
+            <button className="px-5 py-2 rounded-full bg-[#2B7A78] text-white text-sm">
+              Join the waitlist
+            </button>
+          </Link>
           <Link href={"/provider"}>
             <button className="px-5 py-2 rounded-full bg-[#D8A44D] text-white text-sm">
               Become a provider
@@ -275,7 +277,7 @@ export default function Services() {
             {/* Verification */}
             <div className="text-center border-l border-[#D8CDBF] pl-6">
 
-              <img src="/Approve.svg" alt=""/>
+              <img src="/Approve.svg" alt="" />
 
               <h3 className="font-semibold text-[#143B35] mt-4">
                 Verification First
@@ -290,7 +292,7 @@ export default function Services() {
             {/* Rollout */}
             <div className="text-center border-l border-[#D8CDBF] pl-6">
 
-              <img src="/Location.svg" alt=""/>
+              <img src="/Location.svg" alt="" />
 
               <h3 className="font-semibold text-[#143B35] mt-4">
                 City-by-city rollout
@@ -305,7 +307,7 @@ export default function Services() {
             {/* Convenience */}
             <div className="text-center border-l border-[#D8CDBF] pl-6">
 
-              <img src="/House.svg" alt=""/>
+              <img src="/House.svg" alt="" />
 
               <h3 className="font-semibold text-[#143B35] mt-4">
                 At-home convenience
@@ -478,9 +480,9 @@ export default function Services() {
                 </p>
 
                 <Link href={"/provider"}>
-                <button className="mt-8 bg-[#D9A548] hover:scale-105 transition text-white px-10 py-4 rounded-full shadow-lg">
-                  Become a provider
-                </button>
+                  <button className="mt-8 bg-[#D9A548] hover:scale-105 transition text-white px-10 py-4 rounded-full shadow-lg">
+                    Become a provider
+                  </button>
                 </Link>
 
                 <p className="text-sm text-gray-400 mt-4">
@@ -513,10 +515,12 @@ export default function Services() {
           <div className="grid md:grid-cols-[2fr_1fr_1fr_1fr_1fr] gap-10">
             {/* Brand */}
             <div>
-              <div className="flex items-center gap-3 mb-4">
-                <Image src="/logo.svg" alt="Locovo" width={36} height={36} />
-                <span className="text-2xl font-semibold">LOCOVO</span>
-              </div>
+              <Link href={"/"}>
+                <div className="flex items-center gap-3 mb-4">
+                  <Image src="/logo.svg" alt="Locovo" width={36} height={36} />
+                  <span className="text-2xl font-semibold">LOCOVO</span>
+                </div>
+              </Link>
 
               <p className="text-sm text-[#C6D2CE] max-w-xs">
                 Join the early access list and help decide

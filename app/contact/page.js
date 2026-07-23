@@ -24,16 +24,19 @@ export default function Contact() {
                     <Link href="/professional" className="hover:scale-110 transition-all duration-300">For Professionals</Link>
                 </div>
                 <div className="hidden lg:flex gap-4">
+                    <Link href={"/early-access"}>
                     <button className="px-5 py-2 rounded-full bg-[#2B7A78] text-white text-sm">
                         Join the waitlist
                     </button>
+                    </Link>
                     <Link href={"/provider"}>
-                    <button className="px-5 py-2 rounded-full bg-[#D8A44D] text-white text-sm">
-                        Become a provider
-                    </button>
+                        <button className="px-5 py-2 rounded-full bg-[#D8A44D] text-white text-sm">
+                            Become a provider
+                        </button>
                     </Link>
                 </div>
             </motion.nav>
+
             <section className="relative py-24 bg-[#FBF8F3] overflow-hidden">
 
                 {/* Left Decoration */}
@@ -174,16 +177,20 @@ export default function Contact() {
                 </div>
 
             </section>
+
+
             <footer className="bg-[#0F3432] text-white">
                 <div className="max-w-7xl mx-auto px-8 py-16">
                     {/* Top Footer */}
                     <div className="grid md:grid-cols-[2fr_1fr_1fr_1fr_1fr] gap-10">
                         {/* Brand */}
                         <div>
-                            <div className="flex items-center gap-3 mb-4">
-                                <Image src="/logo.svg" alt="Locovo" width={36} height={36} />
-                                <span className="text-2xl font-semibold">LOCOVO</span>
-                            </div>
+                            <Link href={"/"}>
+                                <div className="flex items-center gap-3 mb-4">
+                                    <Image src="/logo.svg" alt="Locovo" width={36} height={36} />
+                                    <span className="text-2xl font-semibold">LOCOVO</span>
+                                </div>
+                            </Link>
 
                             <p className="text-sm text-[#C6D2CE] max-w-xs">
                                 Join the early access list and help decide

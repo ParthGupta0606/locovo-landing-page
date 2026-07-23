@@ -24,9 +24,11 @@ export default function EarlyAccess() {
                     <Link href="/safety" className="hover:scale-110 transition-all duration-300">For Professionals</Link>
                 </div>
                 <div className="hidden lg:flex gap-4">
+                    <Link href={"/early-access"}>
                     <button className="px-5 py-2 rounded-full bg-[#2B7A78] text-white text-sm">
                         Join the waitlist
                     </button>
+                    </Link>
                     <Link href={"/provider"}><button className="px-5 py-2 rounded-full bg-[#D8A44D] text-white text-sm">
                         Become a provider
                     </button>
@@ -39,7 +41,7 @@ export default function EarlyAccess() {
                 <div className=" relative py-24 bg-[#FBF8F3] overflow-hidden max-w-5xl mx-auto px-6">
 
                     <div className="flex justify-center">
-                        <img src="/ty.svg" className="w-14 h-14"  />
+                        <img src="/ty.svg" className="w-14 h-14" />
                     </div>
 
                     <div className="text-center mb-12">
@@ -74,10 +76,12 @@ export default function EarlyAccess() {
                     <div className="grid md:grid-cols-[2fr_1fr_1fr_1fr_1fr] gap-10">
                         {/* Brand */}
                         <div>
-                            <div className="flex items-center gap-3 mb-4">
-                                <Image src="/logo.svg" alt="Locovo" width={36} height={36} />
-                                <span className="text-2xl font-semibold">LOCOVO</span>
-                            </div>
+                            <Link href={"/"}>
+                                <div className="flex items-center gap-3 mb-4">
+                                    <Image src="/logo.svg" alt="Locovo" width={36} height={36} />
+                                    <span className="text-2xl font-semibold">LOCOVO</span>
+                                </div>
+                            </Link>
 
                             <p className="text-sm text-[#C6D2CE] max-w-xs">
                                 Join the early access list and help decide

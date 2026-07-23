@@ -7,7 +7,7 @@ import Link from "next/link";
 import { Work_Sans } from "next/font/google";
 export default function howitworks() {
     return (
-        <main className="min-h-screen  p-4 md:p-8 ">
+        <main className="min-h-screen  p-4 md:p-8 bg-[#F7F3EB]">
             <motion.nav
                 initial={{ y: -30, opacity: 0 }}
                 animate={{ y: 0, opacity: 1 }}
@@ -26,9 +26,11 @@ export default function howitworks() {
 
                 </div>
                 <div className="hidden lg:flex gap-4">
-                    <button className="px-5 py-2 rounded-full bg-[#2B7A78] text-white text-sm">
-                        Join the waitlist
-                    </button>
+                    <Link href={"/early-access"}>
+                        <button className="px-5 py-2 rounded-full bg-[#2B7A78] text-white text-sm">
+                            Join the waitlist
+                        </button>
+                    </Link>
                     <Link href={"/provider"}>
                         <button className="px-5 py-2 rounded-full bg-[#D8A44D] text-white text-sm">
                             Become a provider
@@ -37,7 +39,7 @@ export default function howitworks() {
                 </div>
             </motion.nav>
 
-            <section className="relative overflow-hidden bg-gradient-to-b from-[#F2E4D0] via-[#F7F3EB] to-white">
+            <section className="relative overflow-hidden bg-gradient-to-b from-[#F2E4D0] to-[#F7F3EB] ">
 
                 {/* Hero */}
                 <div className="max-w-7xl mx-auto px-6 py-24">
@@ -227,7 +229,7 @@ export default function howitworks() {
 
 
 
-            <section className="max-w-7xl mx-auto px-6 py-12 bg-white">
+            <section className="max-w-7xl mx-auto px-6 py-12 bg-[#F7F3EB]">
                 <div className="grid md:grid-cols-3 gap-6">
                     <div className="bg-white rounded-3xl p-6 shadow-sm">
                         <img src="/Approve.svg" alt="" />
@@ -409,10 +411,12 @@ export default function howitworks() {
                     <div className="grid md:grid-cols-[2fr_1fr_1fr_1fr_1fr] gap-10">
                         {/* Brand */}
                         <div>
-                            <div className="flex items-center gap-3 mb-4">
-                                <Image src="/logo.svg" alt="Locovo" width={36} height={36} />
-                                <span className="text-2xl font-semibold">LOCOVO</span>
-                            </div>
+                            <Link href={"/"}>
+                                <div className="flex items-center gap-3 mb-4">
+                                    <Image src="/logo.svg" alt="Locovo" width={36} height={36} />
+                                    <span className="text-2xl font-semibold">LOCOVO</span>
+                                </div>
+                            </Link>
 
                             <p className="text-sm text-[#C6D2CE] max-w-xs">
                                 Join the early access list and help decide

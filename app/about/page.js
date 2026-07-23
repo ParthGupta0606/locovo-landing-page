@@ -26,16 +26,18 @@ export default function about() {
 
                 </div>
                 <div className="hidden lg:flex gap-4">
-                    <button className="px-5 py-2 rounded-full bg-[#2B7A78] text-white text-sm">
-                        Join the waitlist
-                    </button>
+                    <Link href={"/early-access"}>
+                        <button className="px-5 py-2 rounded-full bg-[#2B7A78] text-white text-sm">
+                            Join the waitlist
+                        </button>
+                    </Link>
 
                     <Link href={"/provider"}>
-                    <button className="px-5 py-2 rounded-full bg-[#D8A44D] text-white text-sm">
-                        Become a provider
-                    </button>
+                        <button className="px-5 py-2 rounded-full bg-[#D8A44D] text-white text-sm">
+                            Become a provider
+                        </button>
                     </Link>
-                    
+
                 </div>
             </motion.nav>
 
@@ -245,10 +247,12 @@ export default function about() {
                     <div className="grid md:grid-cols-[2fr_1fr_1fr_1fr_1fr] gap-10">
                         {/* Brand */}
                         <div>
-                            <div className="flex items-center gap-3 mb-4">
-                                <Image src="/logo.svg" alt="Locovo" width={36} height={36} />
-                                <span className="text-2xl font-semibold">LOCOVO</span>
-                            </div>
+                            <Link href={"/"}>
+                                <div className="flex items-center gap-3 mb-4">
+                                    <Image src="/logo.svg" alt="Locovo" width={36} height={36} />
+                                    <span className="text-2xl font-semibold">LOCOVO</span>
+                                </div>
+                            </Link>
 
                             <p className="text-sm text-[#C6D2CE] max-w-xs">
                                 Join the early access list and help decide

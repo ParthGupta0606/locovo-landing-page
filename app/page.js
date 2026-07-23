@@ -37,9 +37,11 @@ export default function Home() {
           <Link href="/professional" className="hover:scale-110 transition-all duration-300">For Professionals</Link>
         </div>
         <div className="hidden lg:flex gap-4 ">
-          <button className="px-5 py-2 rounded-full bg-[#2B7A78] text-white text-sm">
-            Join the waitlist
-          </button>
+          <Link href={"/early-access"}>
+            <button className="px-5 py-2 rounded-full bg-[#2B7A78] text-white text-sm">
+              Join the waitlist
+            </button>
+          </Link>
           <Link href={"/provider"}>
             <button className="px-5 py-2 rounded-full bg-[#D8A44D] text-white text-sm">
               Become a provider
@@ -71,7 +73,7 @@ export default function Home() {
               to your home.
             </p>
             <div className="flex flex-wrap gap-4 mt-10">
-              <button className="px-7 py-3 rounded-full bg-[#2B7A78] text-white font-medium"> Join early access   </button>
+              <Link href={"/early-access"}><button className="px-7 py-3 rounded-full bg-[#2B7A78] text-white font-medium"> Join early access   </button></Link>
               <Link href={"/provider"}><button className="px-7 py-3 rounded-full bg-[#D8A44D] text-white font-medium"> Become a provider   </button></Link>
             </div>
             <span className="inline-flex items-center gap-2 text-[#6F5C2F] px-4 py-2 rounded-full text-sm">
@@ -256,8 +258,8 @@ export default function Home() {
       </section>
 
 
-      <section className="relative mt-32 overflow-hidden bg-[#FBF8F2] py-24"  
-      style={{
+      <section className="relative mt-32 overflow-hidden bg-[#FBF8F2] py-24"
+        style={{
           backgroundImage: "url('/bg3.svg')",
           backgroundRepeat: "repeat",
           backgroundSize: "13.33% auto",
@@ -947,10 +949,12 @@ export default function Home() {
           <div className="grid md:grid-cols-[2fr_1fr_1fr_1fr_1fr] gap-10">
             {/* Brand */}
             <div>
-              <div className="flex items-center gap-3 mb-4">
-                <Image src="/logo.svg" alt="Locovo" width={36} height={36} />
-                <span className="text-2xl font-semibold">LOCOVO</span>
-              </div>
+              <Link href={"/"}>
+                <div className="flex items-center gap-3 mb-4">
+                  <Image src="/logo.svg" alt="Locovo" width={36} height={36} />
+                  <span className="text-2xl font-semibold">LOCOVO</span>
+                </div>
+              </Link>
 
               <p className="text-sm text-[#C6D2CE] max-w-xs">
                 Join the early access list and help decide
