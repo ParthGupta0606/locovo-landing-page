@@ -34,16 +34,16 @@ export default function Home() {
           <Link href="/how-it-works" className=" hover:scale-110 transition-all duration-300">How it works</Link>
           <Link href="/services" className="hover:scale-110 transition-all duration-300">Services</Link>
           <Link href="/customers" className="hover:scale-110 transition-all duration-300">For Customers</Link>
-          <Link href="/safety" className="hover:scale-110 transition-all duration-300">For Professionals</Link>
+          <Link href="/professional" className="hover:scale-110 transition-all duration-300">For Professionals</Link>
         </div>
         <div className="hidden lg:flex gap-4 ">
           <button className="px-5 py-2 rounded-full bg-[#2B7A78] text-white text-sm">
             Join the waitlist
           </button>
           <Link href={"/provider"}>
-          <button className="px-5 py-2 rounded-full bg-[#D8A44D] text-white text-sm">
-            Become a provider
-          </button>
+            <button className="px-5 py-2 rounded-full bg-[#D8A44D] text-white text-sm">
+              Become a provider
+            </button>
           </Link>
         </div>
       </motion.nav>
@@ -55,8 +55,9 @@ export default function Home() {
             initial={{ x: -50, opacity: 0 }}
             animate={{ x: 0, opacity: 1 }}
             transition={{ duration: 0.8 }} >
-            <span className="inline-block bg-[#EFE7C8] text-[#6F5C2F] px-4 py-2 rounded-full text-sm">
-              Coming soon to selected cities
+            <span className="inline-flex items-center gap-2 bg-[#B4C0A5] text-[#6F5C2F] px-4 py-2 rounded-full text-sm">
+              <span className="w-2.5 h-2.5 rounded-full bg-[#D8A44D]"></span>
+              Coming soon to selected Canadian cities
             </span>
             <h1 className="mt-8 text-5xl lg:text-7xl font-serif leading-tight text-[#24423F]">
               Trusted at-home<br /> wellness, delivered <br />by{" "}
@@ -73,7 +74,10 @@ export default function Home() {
               <button className="px-7 py-3 rounded-full bg-[#2B7A78] text-white font-medium"> Join early access   </button>
               <Link href={"/provider"}><button className="px-7 py-3 rounded-full bg-[#D8A44D] text-white font-medium"> Become a provider   </button></Link>
             </div>
-            <p className="mt-4 text-sm text-gray-500"> • Be among the first to know when we launch in your city. </p>
+            <span className="inline-flex items-center gap-2 text-[#6F5C2F] px-4 py-2 rounded-full text-sm">
+              <span className="w-2.5 h-2.5 rounded-full bg-[#D8A44D]"></span>
+              Be among the first to know when we launch in your city.
+            </span>
           </motion.div>
 
           <motion.div
@@ -84,7 +88,7 @@ export default function Home() {
               ease: "easeInOut",
             }}
             className="flex justify-center">
-            <div className="relative w-full max-w-lg aspect-square rounded-3xl bg-[#F0E8D8] p-6">
+            <div className="relative w-full max-w-lg aspect-square rounded-3xl p-6">
               <Image
                 src="/illustration.svg"
                 alt="Illustration"
@@ -251,7 +255,13 @@ export default function Home() {
         </motion.div>
       </section>
 
-      <section className="relative mt-32 overflow-hidden bg-[#FBF8F2] py-24">
+
+      <section className="relative mt-32 overflow-hidden bg-[#FBF8F2] py-24"  
+      style={{
+          backgroundImage: "url('/bg3.svg')",
+          backgroundRepeat: "repeat",
+          backgroundSize: "13.33% auto",
+        }}>
         <div className="mx-auto max-w-7xl px-6">
           <motion.div
             initial={{ opacity: 0, y: 40 }}
@@ -427,7 +437,7 @@ export default function Home() {
                 ))}
               </div>
               <Link href={"/provider"}>
-              <button className="  
+                <button className="  
                     mt-10
                     rounded-full
                     bg-[#D8A44D]
@@ -436,15 +446,15 @@ export default function Home() {
                     text-sm
                     font-medium
                     text-white">
-                Become a Provider
-              </button>
+                  Become a Provider
+                </button>
               </Link>
             </motion.div>
           </div>
         </div>
       </section>
 
-      <section className="max-w-7xl mx-auto py-32">
+      <section className="max-w-7xl mx-auto py-32  bg-gradient-to-bl from-[#FFE5AA] from 0% to-white to-45% ">
         <p className="text-sm uppercase tracking-wider text-[#2B7A78]">
           WHY LOCOVO
         </p>
@@ -466,7 +476,7 @@ export default function Home() {
 
           <div className="bg-white rounded-t-[100px] rounded-b-[20px] p-8 text-center shadow-sm border border-[#9DD7D2]">
             <img
-              src="/background.svg"
+              src="/Background.svg"
               alt="Background"
               className="mx-auto w-15 h-15"
             />
@@ -478,7 +488,7 @@ export default function Home() {
 
           <div className="bg-white rounded-t-[100px] rounded-b-[20px] p-8 text-center shadow-sm border border-[#9DD7D2]">
             <img
-              src="/human.svg"
+              src="/Human.svg"
               alt="Human"
               className="mx-auto w-12 h-12"
             />
@@ -560,7 +570,7 @@ export default function Home() {
           <div className="bg-white rounded-2xl p-6 shadow-sm">
             <div className="w-16 h-16 mx-auto mb-4 rounded-full bg-[#E7EFE3] flex items-center justify-center">
               <img
-                src="/certificate.svg"
+                src="/Certificate.svg"
                 alt="Certificate"
                 className="mx-auto w-12 h-12"
               />
@@ -763,9 +773,9 @@ export default function Home() {
                 marketplace in Canada.
               </p>
               <Link href={"/provider"}>
-              <button className="bg-[#2F7C73] hover:bg-[#27675F] text-white px-8 py-4 rounded-full transition">
-                Become an early provider
-              </button></Link>
+                <button className="bg-[#2F7C73] hover:bg-[#27675F] text-white px-8 py-4 rounded-full transition">
+                  Become an early provider
+                </button></Link>
             </div>
           </div>
         </div>

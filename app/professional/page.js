@@ -1,9 +1,10 @@
 "use client";
 
 import { motion } from "framer-motion";
+import { icons } from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
-export default function Safety() {
+export default function Professional() {
     return (
         <main className="min-h-screen bg-[#F9F7F2]">
             {/* Navbar */}
@@ -21,44 +22,437 @@ export default function Safety() {
                     <Link href="/how-it-works" className="hover:scale-110 transition-all duration-300">How it works</Link>
                     <Link href="/services" className="hover:scale-110 transition-all duration-300">Services</Link>
                     <Link href="/customers" className="hover:scale-110 transition-all duration-300">For Customers</Link>
-                    <Link href="/safety" className="hover:scale-110 transition-all duration-300">For Professionals</Link>
+                    <Link href="/professional" className="hover:scale-110 transition-all duration-300">For Professionals</Link>
                 </div>
                 <div className="hidden lg:flex gap-4">
                     <button className="px-5 py-2 rounded-full bg-[#2B7A78] text-white text-sm">
                         Join the waitlist
                     </button>
                     <Link href={"/provider"}>
-                    <button className="px-5 py-2 rounded-full bg-[#D8A44D] text-white text-sm">
-                        Become a provider
-                    </button>
+                        <button className="px-5 py-2 rounded-full bg-[#D8A44D] text-white text-sm">
+                            Become a provider
+                        </button>
                     </Link>
                 </div>
             </motion.nav>
 
+            <section className=" text-center py-20  bg-gradient-to-b bg-[#F2E4D0] via-[#F7F3EB] to-white">
 
-            <section className="min-h-screen bg-[#FBF8F3]">
-                <div className=" relative py-24 bg-[#FBF8F3] overflow-hidden max-w-5xl mx-auto px-6">
+                <h1 className=" max-w-4xl mx-auto text-center text-6xl font-serif text-[#143B35] leading-tight">
+                    Wellness services, made easier to
+                    <br />
+                    access from home.
+                </h1>
 
-                    <div className="text-center mb-12">
-                        <h1 className="text-7xl font-serif text-[#143B35]">
-                            Your application has been recieved
-                        </h1>
+                <p className="max-w-4xl mx-auto text-center text-gray-500 mt-6">
+                    Join early access to help bring trusted
+                    at-home wellness services to your city.
+                </p>
 
-                        <p className="mt-4 text-gray-500 max-w-2xl mx-auto">
-                            Thank you for your message. Our team will review your information and contact you with next steps when provider onboarding begins.
+                <Link href={"/early-access"}><button className="mt-8 bg-[#2F8A82] text-white px-8 py-3 rounded-full">
+                    Join Early Access
+                </button></Link>
+
+            </section>
+
+            {/* Main Section */}
+            <section className="max-w-7xl mx-auto" style={{
+                backgroundImage: "url('/bg3.svg')",
+                backgroundRepeat: "repeat",
+                backgroundSize: "13.33% auto",
+            }}>
+
+                <div className="grid lg:grid-cols-2 gap-10">
+
+                    {/* Benefits Card */}
+                    <div className=" rounded-[32px] p-10 shadow-sm">
+
+                        <h2 className="text-4xl font-serif text-[#143B35] text-center">
+                            Why join early access?
+                        </h2>
+
+                        <p className="text-center text-gray-500 mt-4">
+                            Your interest helps build a better experience
+                            and bring trusted services to more communities.
                         </p>
+
+                        <div className="grid grid-cols-2 gap-4 mt-10 ">
+
+                            {[
+                                {
+                                    icon: "/demand.svg",
+                                    title: "Help bring Locovo to your area",
+                                    text: "Your interest helps us understand where demand is strongest.",
+                                },
+                                {
+                                    icon: "/sheet.svg",
+                                    title: "Tell us what you need",
+                                    text: "Choose the wellness services you're most interested in.",
+                                },
+                                {
+                                    icon: "/shield.svg",
+                                    title: "Get relevant launch updates",
+                                    text: "Receive personalized launch progress updates.",
+                                },
+                                {
+                                    icon: "man.svg",
+                                    title: "Be among the first to access",
+                                    text: "Get early booking opportunities when we launch.",
+                                },
+                            ].map((item) => (
+                                <div
+                                    key={item.title}
+                                    className="bg-white rounded-2xl p-5 border shadow-sm"
+                                >
+                                    <Image
+                                        src={item.icon}
+                                        alt={item.title}
+                                        width={45}
+                                        height={45}
+                                        className="mb-4"
+                                    />
+                                    <h3 className="font-semibold text-[#143B35]">
+                                        {item.title}
+                                    </h3>
+
+                                    <p className="text-sm text-gray-500 mt-2">
+                                        {item.text}
+                                    </p>
+                                </div>
+                            ))}
+                        </div>
+
+                        {/* Launch Area */}
+                        <div className="bg-white rounded-2xl border p-5 mt-6">
+                            <img 
+                            src="/loc2.svg"
+                            alt=""
+                            width={45}
+                            height={45} />
+
+                            <h3 className="font-semibold text-[#143B35]">
+                                Launching first across the Greater Toronto Area
+                            </h3>
+
+                            <div className="flex flex-wrap gap-2 mt-4">
+                                {[
+                                    "Toronto",
+                                    "Mississauga",
+                                    "Brampton",
+                                    "Markham",
+                                ].map((city) => (
+                                    <span
+                                        key={city}
+                                        className="px-3 py-1 bg-[#F5F5F5] rounded-full text-xs"
+                                    >
+                                        {city}
+                                    </span>
+                                ))}
+                            </div>
+
+                            <p className="text-xs text-gray-500 mt-4">
+                                Not in one of these areas? Join early access anyway.
+                            </p>
+
+                        </div>
+
                     </div>
+
+                    {/* Form */}
+                    <div>
+
+                        <h2 className="text-4xl font-serif text-[#143B35] mb-6">
+                            Provider Waitlist Form
+                        </h2>
+
+                        <div className="bg-white rounded-[32px] p-8 shadow-xl">
+
+                            <div className="space-y-5">
+
+                                {/* Full Name */}
+                                <div>
+                                    <label className="block text-xs font-medium text-[#143B35] mb-2">
+                                        Full Name
+                                    </label>
+                                    <input
+                                        type="text"
+                                        placeholder="Firstname Lastname"
+                                        className="w-full border border-gray-200 rounded-xl px-4 py-3 outline-none focus:border-[#2B7A78]"
+                                    />
+                                </div>
+
+                                {/* Email */}
+                                <div>
+                                    <label className="block text-xs font-medium text-[#143B35] mb-2">
+                                        Email
+                                    </label>
+                                    <input
+                                        type="email"
+                                        placeholder="you@email.com"
+                                        className="w-full border border-gray-200 rounded-xl px-4 py-3 outline-none focus:border-[#2B7A78]"
+                                    />
+                                </div>
+
+                                {/* Phone */}
+                                <div>
+                                    <label className="block text-xs font-medium text-[#143B35] mb-2">
+                                        Phone Number (optional)
+                                    </label>
+                                    <input
+                                        type="tel"
+                                        placeholder="+91"
+                                        className="w-full border border-gray-200 rounded-xl px-4 py-3 outline-none focus:border-[#2B7A78]"
+                                    />
+                                </div>
+
+                                {/* Province + City */}
+                                <div className="grid md:grid-cols-2 gap-4">
+
+                                    <div>
+                                        <label className="block text-xs font-medium text-[#143B35] mb-2">
+                                            Province
+                                        </label>
+
+                                        <select className="w-full border border-gray-200 rounded-xl px-4 py-3 outline-none focus:border-[#2B7A78]">
+                                            <option>Select province</option>
+                                        </select>
+                                    </div>
+
+                                    <div>
+                                        <label className="block text-xs font-medium text-[#143B35] mb-2">
+                                            City
+                                        </label>
+
+                                        <input
+                                            type="text"
+                                            placeholder="e.g. Toronto"
+                                            className="w-full border border-gray-200 rounded-xl px-4 py-3 outline-none focus:border-[#2B7A78]"
+                                        />
+                                    </div>
+
+                                </div>
+
+                                {/* Service + Experience */}
+                                <div className="grid md:grid-cols-2 gap-4">
+
+                                    <div>
+                                        <label className="block text-xs font-medium text-[#143B35] mb-2">
+                                            Service Category
+                                        </label>
+
+                                        <select className="w-full border border-gray-200 rounded-xl px-4 py-3 outline-none focus:border-[#2B7A78]">
+                                            <option>Choose a service</option>
+                                        </select>
+                                    </div>
+
+                                    <div>
+                                        <label className="block text-xs font-medium text-[#143B35] mb-2">
+                                            Years of Experience
+                                        </label>
+
+                                        <input
+                                            type="number"
+                                            placeholder="Enter a number >0"
+                                            className="w-full border border-gray-200 rounded-xl px-4 py-3 outline-none focus:border-[#2B7A78]"
+                                        />
+                                    </div>
+
+                                </div>
+
+                                {/* License + Preferred Time */}
+                                <div className="grid md:grid-cols-2 gap-4">
+
+                                    <div>
+                                        <label className="block text-xs font-medium text-[#143B35] mb-2">
+                                            Licenses / Certifications (if applicable)
+                                        </label>
+
+                                        <input
+                                            type="text"
+                                            placeholder="Day, Time"
+                                            className="w-full border border-gray-200 rounded-xl px-4 py-3 outline-none focus:border-[#2B7A78]"
+                                        />
+                                    </div>
+
+                                    <div>
+                                        <label className="block text-xs font-medium text-[#143B35] mb-2">
+                                            Availability
+                                        </label>
+
+                                        <input
+                                            type="text"
+                                            placeholder="Day, Time"
+                                            className="w-full border border-gray-200 rounded-xl px-4 py-3 outline-none focus:border-[#2B7A78]"
+                                        />
+                                    </div>
+
+                                </div>
+
+                                {/* Travel + Radius */}
+                                <div className="grid md:grid-cols-2 gap-4">
+
+                                    <div>
+                                        <label className="block text-xs font-medium text-[#143B35] mb-2">
+                                            Travel Radius
+                                        </label>
+
+                                        <input
+                                            type="number"
+                                            placeholder="Enter a number <0"
+                                            className="w-full border border-gray-200 rounded-xl px-4 py-3 outline-none focus:border-[#2B7A78]"
+                                        />
+                                    </div>
+
+                                    <div>
+                                        <label className="block text-xs font-medium text-[#143B35] mb-2">
+                                            Availability
+                                        </label>
+
+                                        <input
+                                            type="text"
+                                            placeholder="Day, Time"
+                                            className="w-full border border-gray-200 rounded-xl px-4 py-3 outline-none focus:border-[#2B7A78]"
+                                        />
+                                    </div>
+
+                                </div>
+
+                                {/* Bio */}
+                                <div>
+                                    <label className="block text-xs font-medium text-[#143B35] mb-2">
+                                        Short Professional Bio
+                                    </label>
+
+                                    <textarea
+                                        rows={5}
+                                        placeholder="Enter text..."
+                                        className="w-full border border-gray-200 rounded-xl px-4 py-3 resize-none outline-none focus:border-[#2B7A78]"
+                                    />
+                                </div>
+
+                                {/* Checkbox */}
+                                <label className="flex items-start gap-3 text-xs text-gray-500">
+
+                                    <input
+                                        type="checkbox"
+                                        className="mt-1 accent-[#2B7A78]"
+                                    />
+
+                                    <span>
+                                        I agree to receive updates about launch, availability,
+                                        and early access.
+                                    </span>
+
+                                </label>
+
+                                {/* Button */}
+                                <Link href="/pty">
+                                    <button className="w-full bg-[#2B7A78] hover:bg-[#246966] transition-all duration-300 text-white font-medium py-4 rounded-full shadow-lg hover:scale-[1.02]">
+                                        Submit Application
+                                    </button>
+                                </Link>
+
+                            </div>
+
+                        </div>
+
+                    </div>
+
                 </div>
-                <div className="flex justify-center">
-                    <Link href="/">
-                        <button type="submit" className=" px-5 py-2 rounded-full bg-[#2B7A78] text-white text-sm">
-                            Back To Home
-                        </button>
-                    </Link>
-                </div>
+
             </section>
 
 
+            <section className="py-24 bg-[#F7F3EB]">
+                <div className="max-w-7xl mx-auto px-6">
+                    <div className="bg-[#F8F3EC] rounded-[32px] p-12 relative overflow-hidden">
+                        {/* Heading */}
+                        <div className="text-center">
+                            <h2 className="text-5xl md:text-6xl font-serif text-[#143B35] leading-tight">
+                                Wellness, your way.<br />Coming soon.
+                            </h2>
+                            <p className="text-gray-500 mt-6 max-w-xl mx-auto">
+                                Personalized wellness services at home and
+                                exclusive experiences at premium destinations.
+                            </p>
+                        </div>
+                        {/* Content */}
+                        <div className="grid md:grid-cols-2 mt-20 relative">
+                            {/* Divider */}
+                            <div className="hidden md:block absolute left-1/2 top-0 bottom-0 w-px bg-gray-300 -translate-x-1/2">
+                                <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-12 h-12 rounded-full bg-white border flex items-center justify-center text-sm">
+                                    OR
+                                </div>
+                            </div>
+                            {/* Left */}
+                            <div className="text-center px-10">
+                                <div className="w-20 h-20 mx-auto rounded-full bg-[#E8F1E7] flex items-center justify-center mb-6">
+                                    <img
+                                        src="/wellness.svg"
+                                        alt=""
+                                        className="w-16 h-16"
+                                    />
+                                </div>
+                                <h3 className="text-3xl font-bold text-[#143B35] uppercase">
+                                    Looking for a<br />Wellness Service?
+                                </h3>
+                                <p className="text-gray-500 mt-4">
+                                    Be the first to access personalized
+                                    wellness services and exclusive offers.
+                                </p>
+                                <Link href={"/early-access"}><button className="mt-8 bg-[#2F7D74] hover:scale-105 transition text-white px-10 py-4 rounded-full shadow-lg">
+                                    Join early access
+                                </button></Link>
+                                <p className="text-sm text-gray-400 mt-4">
+                                    No spam. Just updates that matter.
+                                </p>
+                            </div>
+
+                            {/* Right */}
+                            <div className="text-center px-10 mt-12 md:mt-0">
+                                <div className="w-20 h-20 mx-auto rounded-full bg-[#F6E7C6] flex items-center justify-center mb-6">
+                                    <img
+                                        src="/provider.svg"
+                                        alt=""
+                                        className="w-14 h-14"
+                                    />
+                                </div>
+
+                                <h3 className="text-3xl font-bold text-[#143B35] uppercase">
+                                    Looking for a<br />Wellness Provider?
+                                </h3>
+                                <p className="text-gray-500 mt-4">
+                                    Be the first to access personalized
+                                    wellness services and exclusive offers.
+                                </p>
+
+                                <button className="mt-8 bg-[#D9A548] hover:scale-105 transition text-white px-10 py-4 rounded-full shadow-lg">
+                                    Become a provider
+                                </button>
+
+                                <p className="text-sm text-gray-400 mt-4">
+                                    Quick application. We'll be in touch.
+                                </p>
+                            </div>
+                            <Image
+                                src="/mortar.svg"
+                                alt=""
+                                width={160}
+                                height={160}
+                                className="absolute bottom-0 left-0 opacity-100" />
+                            <Image
+                                src="/pebble.svg"
+                                alt=""
+                                width={190}
+                                height={120}
+                                className="absolute bottom-0 right-0 opacity-100" />
+
+                        </div>
+
+                    </div>
+                </div>
+
+            </section>
 
             <footer className="bg-[#0F3432] text-white">
                 <div className="max-w-7xl mx-auto px-8 py-16">
@@ -144,6 +538,8 @@ export default function Safety() {
 
                 </div>
             </footer>
+
+
         </main>
 
     );

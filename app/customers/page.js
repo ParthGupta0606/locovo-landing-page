@@ -21,16 +21,16 @@ export default function Customers() {
                     <Link href="/how-it-works" className="hover:scale-110 transition-all duration-300">How it works</Link>
                     <Link href="/services" className="hover:scale-110 transition-all duration-300">Services</Link>
                     <Link href="/customers" className="hover:scale-110 transition-all duration-300">For Customers</Link>
-                    <Link href="/safety" className="hover:scale-110 transition-all duration-300">For Professionals</Link>
+                    <Link href="/professional" className="hover:scale-110 transition-all duration-300">For Professionals</Link>
                 </div>
                 <div className="hidden lg:flex gap-4">
                     <button className="px-5 py-2 rounded-full bg-[#2B7A78] text-white text-sm">
                         Join the waitlist
                     </button>
                     <Link href={"/provider"}>
-                    <button className="px-5 py-2 rounded-full bg-[#D8A44D] text-white text-sm">
-                        Become a provider
-                    </button>
+                        <button className="px-5 py-2 rounded-full bg-[#D8A44D] text-white text-sm">
+                            Become a provider
+                        </button>
                     </Link>
                 </div>
             </motion.nav>
@@ -75,18 +75,22 @@ export default function Customers() {
 
                             {[
                                 {
+                                    icon: "/demand.svg",
                                     title: "Help bring Locovo to your area",
                                     text: "Your interest helps us understand where demand is strongest.",
                                 },
                                 {
+                                    icon: "/sheet.svg",
                                     title: "Tell us what you need",
                                     text: "Choose the wellness services you're most interested in.",
                                 },
                                 {
+                                    icon: "/shield.svg",
                                     title: "Get relevant launch updates",
                                     text: "Receive personalized launch progress updates.",
                                 },
                                 {
+                                    icon: "man.svg",
                                     title: "Be among the first to access",
                                     text: "Get early booking opportunities when we launch.",
                                 },
@@ -95,6 +99,13 @@ export default function Customers() {
                                     key={item.title}
                                     className="bg-white rounded-2xl p-5 border shadow-sm"
                                 >
+                                    <Image
+                                        src={item.icon}
+                                        alt={item.title}
+                                        width={45}
+                                        height={45}
+                                        className="mb-4"
+                                    />
                                     <h3 className="font-semibold text-[#143B35]">
                                         {item.title}
                                     </h3>
@@ -108,7 +119,11 @@ export default function Customers() {
 
                         {/* Launch Area */}
                         <div className="bg-white rounded-2xl border p-5 mt-6">
-
+                            <img
+                                src="/loc2.svg"
+                                alt=""
+                                width={45}
+                                height={45} />
                             <h3 className="font-semibold text-[#143B35]">
                                 Launching first across the Greater Toronto Area
                             </h3>
@@ -215,6 +230,55 @@ export default function Customers() {
 
             </section>
 
+            <section className="py-24 mt-16"
+                style={{
+                    backgroundImage: "url('/bg.svg')",
+                    backgroundRepeat: "repeat",
+                    backgroundSize: "33.33% auto",
+                }}>
+
+                <div className="max-w-4xl mx-auto px-6">
+                    <h2 className="text-center text-5xl font-serif text-[#143B35] mb-12">
+                        Customer questions, answered.
+                    </h2>
+                    <div className="space-y-4">
+                        <details className="bg-white rounded-2xl p-6">
+                            <summary className="cursor-pointer font-medium">
+                                Which cities are included in the initial launch?
+                            </summary>
+                        </details>
+
+                        <details className="bg-white rounded-2xl p-6">
+                            <summary className="cursor-pointer font-medium">
+                                How does early access work for customers?
+                            </summary>
+                        </details>
+
+                        <details className="bg-white rounded-2xl p-6">
+                            <summary className="cursor-pointer font-medium">
+                                Will all services be available in every launch area??
+                            </summary>
+                        </details>
+                        <details className="bg-white rounded-2xl p-6">
+                            <summary className="cursor-pointer font-medium">
+                                Are providers reviewed before they join Locovo?
+                            </summary>
+                        </details>
+                        <details className="bg-white rounded-2xl p-6">
+                            <summary className="cursor-pointer font-medium">
+                                How do I join early access for a specific service?
+                            </summary>
+                        </details>
+                        <details className="bg-white rounded-2xl p-6">
+                            <summary className="cursor-pointer font-medium">
+                                Can I apply as a provider for one of these services?
+                            </summary>
+                        </details>
+
+                    </div>
+
+                </div>
+            </section>
 
             <section className="py-24 bg-[#F7F3EB]">
                 <div className="max-w-7xl mx-auto px-6">

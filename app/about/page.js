@@ -22,7 +22,7 @@ export default function about() {
                     <Link href="/how-it-works" className="hover:scale-110 transition-all duration-300">How it works</Link>
                     <Link href="/services" className="hover:scale-110 transition-all duration-300">Services</Link>
                     <Link href="/customers" className="hover:scale-110 transition-all duration-300">For Customers</Link>
-                    <Link href="/safety" className="hover:scale-110 transition-all duration-300">For Professionals</Link>
+                    <Link href="/professional" className="hover:scale-110 transition-all duration-300">For Professionals</Link>
 
                 </div>
                 <div className="hidden lg:flex gap-4">
