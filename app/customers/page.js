@@ -35,15 +35,15 @@ export default function Customers() {
                 </div>
             </motion.nav>
 
-            <section className="max-w-4xl mx-auto text-center py-20  bg-gradient-to-b bg-[#F2E4D0] via-[#F7F3EB] to-white">
+            <section className=" text-center py-20  bg-gradient-to-b bg-[#F2E4D0] via-[#F7F3EB] to-white">
 
-                <h1 className="text-6xl font-serif text-[#143B35] leading-tight">
+                <h1 className=" max-w-4xl mx-auto text-center text-6xl font-serif text-[#143B35] leading-tight">
                     Wellness services, made easier to
                     <br />
                     access from home.
                 </h1>
 
-                <p className="text-gray-500 mt-6">
+                <p className="max-w-4xl mx-auto text-center text-gray-500 mt-6">
                     Join early access to help bring trusted
                     at-home wellness services to your city.
                 </p>
