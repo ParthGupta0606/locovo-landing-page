@@ -1,12 +1,13 @@
 "use client";
 
-import { motion } from "framer-motion";
+import { motion, useScroll, useTransform } from "framer-motion";
+import { useRef } from "react";
 import Image from "next/image";
 import Link from "next/link";
-export default function Customers() {
+import { Work_Sans } from "next/font/google";
+export default function about() {
     return (
-        <main className="min-h-screen bg-[#F9F7F2]">
-            {/* Navbar */}
+        <main className="min-h-screen bg-[#F9F7F2] p-4 md:p-8">
             <motion.nav
                 initial={{ y: -30, opacity: 0 }}
                 animate={{ y: 0, opacity: 1 }}
@@ -17,204 +18,133 @@ export default function Customers() {
                 </div>
                 <div className="hidden lg:flex gap-8 text-sm text-gray-700">
                     <Link href="/" className="hover:scale-110 transition-all duration-300"> Home </Link>
-                    <Link href="/about" className="nav-link">About </Link>
+                    <Link href="/about" className="hover:scale-110 transition-all duration-300">About </Link>
                     <Link href="/how-it-works" className="hover:scale-110 transition-all duration-300">How it works</Link>
                     <Link href="/services" className="hover:scale-110 transition-all duration-300">Services</Link>
                     <Link href="/customers" className="hover:scale-110 transition-all duration-300">For Customers</Link>
                     <Link href="/safety" className="hover:scale-110 transition-all duration-300">For Professionals</Link>
+
                 </div>
                 <div className="hidden lg:flex gap-4">
                     <button className="px-5 py-2 rounded-full bg-[#2B7A78] text-white text-sm">
                         Join the waitlist
                     </button>
+
                     <Link href={"/provider"}>
                     <button className="px-5 py-2 rounded-full bg-[#D8A44D] text-white text-sm">
                         Become a provider
                     </button>
                     </Link>
+                    
                 </div>
             </motion.nav>
 
-            <section className="max-w-4xl mx-auto text-center py-20  bg-gradient-to-b bg-[#F2E4D0] via-[#F7F3EB] to-white">
 
-                <h1 className="text-6xl font-serif text-[#143B35] leading-tight">
-                    Wellness services, made easier to
-                    <br />
-                    access from home.
-                </h1>
+            <section className="py-24 bg-gradient-to-b bg-[#F2E4D0] via-[#F7F3EB] to-white">
+                <div className="max-w-6xl mx-auto px-6">
 
-                <p className="text-gray-500 mt-6">
-                    Join early access to help bring trusted
-                    at-home wellness services to your city.
-                </p>
+                    {/* Hero Text */}
+                    <div className="text-center max-w-4xl mx-auto">
+                        <h1 className="text-6xl font-serif text-[#143B35] leading-tight">
+                            Making trusted wellness more
+                            <br />
+                            accessible at home.
+                        </h1>
 
-                <Link href={"/early-access"}><button className="mt-8 bg-[#2F8A82] text-white px-8 py-3 rounded-full">
-                    Join Early Access
-                </button></Link>
+                        <p className="mt-6 text-gray-500">
+                            We are building a Canada-focused wellness marketplace
+                            that connects people with trusted professionals for
+                            convenient at-home services.
+                        </p>
+                    </div>
 
-            </section>
+                    {/* Mission Card */}
+                    <div className="mt-16 bg-white rounded-[24px] border border-gray-200 shadow-sm p-8 relative">
 
-            {/* Main Section */}
-            <section className="max-w-7xl mx-auto">
+                        <div className="absolute left-0 top-8 h-16 w-1 bg-[#D8A54B] rounded-full" />
 
-                <div className="grid lg:grid-cols-2 gap-10">
-
-                    {/* Benefits Card */}
-                    <div className="bg-[#FBF8F3] rounded-[32px] p-10 shadow-sm">
-
-                        <h2 className="text-4xl font-serif text-[#143B35] text-center">
-                            Why join early access?
+                        <h2 className="text-4xl font-serif text-[#143B35] ml-4">
+                            Our Mission
                         </h2>
 
-                        <p className="text-center text-gray-500 mt-4">
-                            Your interest helps build a better experience
-                            and bring trusted services to more communities.
+                        <p className="mt-4 ml-4 text-gray-600">
+                            To make wellness services
+                            <span className="text-[#2F8A82]"> easier</span>,
+                            <span className="text-[#2F8A82]"> safer</span>,
+                            and
+                            <span className="text-[#2F8A82]"> more convenient</span>
+                            by connecting customers with verified professionals
+                            in their region.
                         </p>
-
-                        <div className="grid grid-cols-2 gap-4 mt-10 ">
-
-                            {[
-                                {
-                                    title: "Help bring Locovo to your area",
-                                    text: "Your interest helps us understand where demand is strongest.",
-                                },
-                                {
-                                    title: "Tell us what you need",
-                                    text: "Choose the wellness services you're most interested in.",
-                                },
-                                {
-                                    title: "Get relevant launch updates",
-                                    text: "Receive personalized launch progress updates.",
-                                },
-                                {
-                                    title: "Be among the first to access",
-                                    text: "Get early booking opportunities when we launch.",
-                                },
-                            ].map((item) => (
-                                <div
-                                    key={item.title}
-                                    className="bg-white rounded-2xl p-5 border shadow-sm"
-                                >
-                                    <h3 className="font-semibold text-[#143B35]">
-                                        {item.title}
-                                    </h3>
-
-                                    <p className="text-sm text-gray-500 mt-2">
-                                        {item.text}
-                                    </p>
-                                </div>
-                            ))}
-                        </div>
-
-                        {/* Launch Area */}
-                        <div className="bg-white rounded-2xl border p-5 mt-6">
-
-                            <h3 className="font-semibold text-[#143B35]">
-                                Launching first across the Greater Toronto Area
-                            </h3>
-
-                            <div className="flex flex-wrap gap-2 mt-4">
-                                {[
-                                    "Toronto",
-                                    "Mississauga",
-                                    "Brampton",
-                                    "Markham",
-                                ].map((city) => (
-                                    <span
-                                        key={city}
-                                        className="px-3 py-1 bg-[#F5F5F5] rounded-full text-xs"
-                                    >
-                                        {city}
-                                    </span>
-                                ))}
-                            </div>
-
-                            <p className="text-xs text-gray-500 mt-4">
-                                Not in one of these areas? Join early access anyway.
-                            </p>
-
-                        </div>
 
                     </div>
 
-                    {/* Form */}
-                    <div>
+                    {/* Why We Exist */}
+                    <div className="relative py-20 text-center">
 
-                        <h2 className="text-4xl font-serif text-[#143B35] mb-6">
-                            Customer Waitlist Form
+                        <Image
+                            src="/flower-left.svg"
+                            alt=""
+                            width={170}
+                            height={140}
+                            className="absolute left-0 top-1/2 -translate-y-1/2"
+                        />
+
+                        <Image
+                            src="/flower-right.svg"
+                            alt=""
+                            width={150}
+                            height={140}
+                            className="absolute right-0 top-1/2 -translate-y-1/2"
+                        />
+
+                        <h2 className="text-5xl font-serif text-[#143B35]">
+                            Why we exist?
                         </h2>
 
-                        <div className="bg-white rounded-[32px] p-8 shadow-lg">
+                        <p className="mt-6 max-w-3xl mx-auto text-gray-600 leading-relaxed">
+                            Finding trusted wellness professionals for at-home
+                            services can be difficult, fragmented, and
+                            time-consuming. We want to simplify that experience
+                            while helping professionals reach more customers.
+                        </p>
 
-                            <div className="space-y-4">
+                    </div>
 
-                                <input
-                                    type="text"
-                                    placeholder="First Name Last Name"
-                                    className="w-full border rounded-xl p-3"
-                                />
+                    {/* Vision Card */}
+                    <div className="bg-[#EAF4F5] rounded-[24px] border border-[#D7E5E7] p-10 relative">
 
-                                <input
-                                    type="email"
-                                    placeholder="you@email.com"
-                                    className="w-full border rounded-xl p-3"
-                                />
+                        <div className="absolute right-0 top-8 h-20 w-1 bg-[#2F8A82] rounded-full" />
 
-                                <input
-                                    type="tel"
-                                    placeholder="+91"
-                                    className="w-full border rounded-xl p-3"
-                                />
+                        <h2 className="text-right text-5xl font-serif text-[#143B35]">
+                            Our Vision
+                        </h2>
 
-                                <div className="grid grid-cols-2 gap-4">
+                        <p className="mt-6 text-center text-gray-600 max-w-4xl mx-auto leading-relaxed">
+                            To become a
+                            <span className="text-[#D8A54B]">
+                                {" "}trusted wellness marketplace{" "}
+                            </span>
 
-                                    <select className="border rounded-xl p-3">
-                                        <option>Select province</option>
-                                    </select>
+                            where customers feel
 
-                                    <input
-                                        type="text"
-                                        placeholder="City"
-                                        className="border rounded-xl p-3"
-                                    />
+                            <span className="text-[#D8A54B]">
+                                {" "}safe booking services{" "}
+                            </span>
 
-                                </div>
+                            and professionals can
 
-                                <select className="border rounded-xl p-3 w-full">
-                                    <option>Choose a service</option>
-                                </select>
+                            <span className="text-[#D8A54B]">
+                                {" "}grow{" "}
+                            </span>
 
-                                <input
-                                    type="text"
-                                    placeholder="Day, Time"
-                                    className="w-full border rounded-xl p-3"
-                                />
-
-                                <label className="flex items-start gap-3 text-sm text-gray-500">
-
-                                    <input type="checkbox" />
-
-                                    <span>
-                                        I agree to receive updates,
-                                        availability and early access notices.
-                                    </span>
-
-                                </label>
-
-                                <Link href={"/early-access"}><button className="w-full bg-[#2F8A82] text-white py-4 rounded-full hover:scale-105 transition">
-                                    Join early access
-                                </button></Link>
-
-                            </div>
-
-                        </div>
+                            with confidence.
+                        </p>
 
                     </div>
 
                 </div>
-
             </section>
-
 
             <section className="py-24 bg-[#F7F3EB]">
                 <div className="max-w-7xl mx-auto px-6">
@@ -253,9 +183,11 @@ export default function Customers() {
                                     Be the first to access personalized
                                     wellness services and exclusive offers.
                                 </p>
-                                <Link href={"/early-access"}><button className="mt-8 bg-[#2F7D74] hover:scale-105 transition text-white px-10 py-4 rounded-full shadow-lg">
-                                    Join early access
-                                </button></Link>
+                                <Link href={"/early-access"}>
+                                    <button className="mt-8 bg-[#2F7D74] hover:scale-105 transition text-white px-10 py-4 rounded-full shadow-lg">
+                                        Join early access
+                                    </button>
+                                </Link>
                                 <p className="text-sm text-gray-400 mt-4">
                                     No spam. Just updates that matter.
                                 </p>
@@ -305,8 +237,8 @@ export default function Customers() {
                     </div>
                 </div>
 
-            </section>
 
+            </section>
             <footer className="bg-[#0F3432] text-white">
                 <div className="max-w-7xl mx-auto px-8 py-16">
                     {/* Top Footer */}
@@ -391,9 +323,6 @@ export default function Customers() {
 
                 </div>
             </footer>
-
-
         </main>
-
     );
 }

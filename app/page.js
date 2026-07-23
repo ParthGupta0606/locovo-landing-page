@@ -341,17 +341,13 @@ export default function Home() {
                   </div>
                 ))}
               </div>
-              <button className="  
-                      mt-10
-                      rounded-full
-                      bg-[#2B7A78]
-                      px-7
-                      py-3
-                      text-sm
-                      font-medium
-                      text-white">
-                Join Early Access
-              </button>
+              <Link href={"/early-access"}>
+                <button className=" mt-10 rounded-full bg-[#2B7A78] px-7 py-3 text-sm font-medium text-white">
+                  Join Early Access
+                </button>
+
+              </Link>
+
             </motion.div>
             <motion.div
               initial={{ opacity: 0, x: 50 }}
@@ -428,6 +424,7 @@ export default function Home() {
                   </div>
                 ))}
               </div>
+              <Link href={"/provider"}>
               <button className="  
                     mt-10
                     rounded-full
@@ -439,6 +436,7 @@ export default function Home() {
                     text-white">
                 Become a Provider
               </button>
+              </Link>
             </motion.div>
           </div>
         </div>
@@ -700,10 +698,11 @@ export default function Home() {
                   </p>
                 </div>
               </div>
-              <button
-                className=" w-full mt-8 py-4 rounded-full bg-[#2B7A78] text-white font-semibold shadow-lg hover:scale-[1.02] transition-all duration-300">
-                Join early access
-              </button>
+              <Link href={"/early-access"}>
+                <button className="mt-10 bg-[#2A746A] text-white px-8 py-4 rounded-full">
+                  Join Early Access
+                </button>
+              </Link>
               <h2 className="w-full px-4 py-4 text-gray-400">Free to join. No spam — just a launch notification for your city.</h2>
             </div>
           </div>
@@ -761,9 +760,10 @@ export default function Home() {
                 Join early and help shape a trusted at-home wellness
                 marketplace in Canada.
               </p>
+              <Link href={"/provider"}>
               <button className="bg-[#2F7C73] hover:bg-[#27675F] text-white px-8 py-4 rounded-full transition">
                 Become an early provider
-              </button>
+              </button></Link>
             </div>
           </div>
         </div>
@@ -850,9 +850,11 @@ export default function Home() {
                 Be the first to access personalized
                 wellness services and exclusive offers.
               </p>
-              <button className="mt-8 bg-[#2F7C73] text-white px-10 py-4 rounded-full">
-                Join early access
-              </button>
+              <Link href={"/early-access"}>
+                <button className="mt-10 bg-[#2A746A] text-white px-8 py-4 rounded-full">
+                  Join Early Access
+                </button>
+              </Link>
               <p className="text-xs text-gray-400 mt-4">
                 ✓ No spam. Just updates that matter.
               </p>
@@ -883,9 +885,9 @@ export default function Home() {
                 wellness services and exclusive offers.
               </p>
 
-              <button className="mt-8 bg-[#D8A03B] text-white px-10 py-4 rounded-full">
+              <Link href={"/provider"}><button className="mt-8 bg-[#D8A03B] text-white px-10 py-4 rounded-full">
                 Become a provider
-              </button>
+              </button></Link>
 
               <p className="text-xs text-gray-400 mt-4">
                 ✓ Quick application. We'll be in touch.
@@ -950,8 +952,8 @@ export default function Home() {
               </h4>
 
               <ul className="space-y-3 text-[#C6D2CE] text-sm">
-                <li><a href="#">About</a></li>
-                <li><a href="#">Contact</a></li>
+                <li><Link href="/about">About</Link></li>
+                <li><Link href="/contact">Contact</Link></li>
               </ul>
             </div>
 

@@ -12,7 +12,7 @@ export default function howitworks() {
                 initial={{ y: -30, opacity: 0 }}
                 animate={{ y: 0, opacity: 1 }}
                 transition={{ duration: 0.6 }}
-                className="mx-auto max-w-7xl bg-white rounded-full px-8 py-4 shadow-sm flex items-center justify-between">
+                className="relative z-[50] mx-auto max-w-7xl bg-white  rounded-full px-8 py-4 shadow-sm flex items-center justify-between">
                 <div className="text-2xl font-bold text-[#2B7A78]">
                     LOCOVO
                 </div>
@@ -29,12 +29,14 @@ export default function howitworks() {
                     <button className="px-5 py-2 rounded-full bg-[#2B7A78] text-white text-sm">
                         Join the waitlist
                     </button>
-                    <button className="px-5 py-2 rounded-full bg-[#D8A44D] text-white text-sm">
-                        Become a provider
-                    </button>
+                    <Link href={"/provider"}>
+                        <button className="px-5 py-2 rounded-full bg-[#D8A44D] text-white text-sm">
+                            Become a provider
+                        </button>
+                    </Link>
                 </div>
             </motion.nav>
-            <section className="relative overflow-hidden py-24 bg-gradient-to-b from-[#EFD6B0] via-[#F7F3EB] to-white">
+            <section className="relative overflow-hidden py-24 bg-gradient-to-b from-[#F2E4D0] via-[#F7F3EB] to-white">
                 <img
                     src="/stem.svg"
                     alt="Stem Right"
@@ -133,9 +135,11 @@ export default function howitworks() {
                                 </div>
                             </div>
                         </div>
-                        <button className="mt-10 bg-[#2A746A] text-white px-8 py-4 rounded-full">
-                            Join Early Access
-                        </button>
+                        <Link href={"/early-access"}>
+                            <button className="mt-10 bg-[#2A746A] text-white px-8 py-4 rounded-full">
+                                Join Early Access
+                            </button>
+                        </Link>
                     </div>
                     <div className="bg-[#FBF6EE] rounded-[32px] p-10 border border-[#F1E3C9]">
                         <span className="inline-block bg-[#F2D9A8] text-[#C08A1A] text-xs font-semibold px-4 py-2 rounded-full">
@@ -195,9 +199,11 @@ export default function howitworks() {
                                 </div>
                             </div>
                         </div>
-                        <button className="mt-10 bg-[#D8A54B] text-white px-8 py-4 rounded-full">
-                            Become a provider
-                        </button>
+                        <Link href={"/provider"}>
+                            <button className="px-5 py-2 rounded-full bg-[#D8A44D] text-white text-sm">
+                                Become a provider
+                            </button>
+                        </Link>
                     </div>
 
                 </div>
@@ -327,9 +333,11 @@ export default function howitworks() {
                                     Be the first to access personalized
                                     wellness services and exclusive offers.
                                 </p>
-                                <button className="mt-8 bg-[#2F7D74] hover:scale-105 transition text-white px-10 py-4 rounded-full shadow-lg">
-                                    Join early access
-                                </button>
+                                <Link href={"/early-access"}>
+                                    <button className="mt-8 bg-[#2F7D74] hover:scale-105 transition text-white px-10 py-4 rounded-full shadow-lg">
+                                        Join early access
+                                    </button>
+                                </Link>
                                 <p className="text-sm text-gray-400 mt-4">
                                     No spam. Just updates that matter.
                                 </p>
@@ -353,9 +361,9 @@ export default function howitworks() {
                                     wellness services and exclusive offers.
                                 </p>
 
-                                <button className="mt-8 bg-[#D9A548] hover:scale-105 transition text-white px-10 py-4 rounded-full shadow-lg">
+                                <Link href={"/provider"}><button className="mt-8 bg-[#D9A548] hover:scale-105 transition text-white px-10 py-4 rounded-full shadow-lg">
                                     Become a provider
-                                </button>
+                                </button></Link>
 
                                 <p className="text-sm text-gray-400 mt-4">
                                     Quick application. We'll be in touch.
@@ -405,8 +413,8 @@ export default function howitworks() {
                             </h4>
 
                             <ul className="space-y-3 text-[#C6D2CE] text-sm">
-                                <li><a href="#">About</a></li>
-                                <li><a href="#">Contact</a></li>
+                                <li><Link href="/about">About</Link></li>
+                                <li><Link href="/contact">Contact</Link></li>
                             </ul>
                         </div>
 

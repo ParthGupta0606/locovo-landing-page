@@ -12,7 +12,7 @@ export default function Safety() {
                 initial={{ y: -30, opacity: 0 }}
                 animate={{ y: 0, opacity: 1 }}
                 transition={{ duration: 0.6 }}
-                className="mx-auto max-w-7xl bg-white rounded-full px-8 py-4 shadow-sm flex items-center justify-between">
+                className="relative z-[50] mx-auto max-w-7xl bg-white  rounded-full px-8 py-4 shadow-sm flex items-center justify-between">
                 <div className="text-2xl font-bold text-[#2B7A78]">
                     LOCOVO
                 </div>
@@ -28,12 +28,14 @@ export default function Safety() {
                     <button className="px-5 py-2 rounded-full bg-[#2B7A78] text-white text-sm">
                         Join the waitlist
                     </button>
+                    <Link href={"/provider"}>
                     <button className="px-5 py-2 rounded-full bg-[#D8A44D] text-white text-sm">
                         Become a provider
                     </button>
+                    </Link>
                 </div>
             </motion.nav>
-            <section className="py-24 bg-[#F6EBDD]">
+            <section className="py-24 bg-gradient-to-b bg-[#F2E4D0] via-[#F7F3EB] to-white">
                 <div className="max-w-6xl mx-auto px-6 text-center">
 
                     <h1 className="text-6xl font-serif text-[#143B35] leading-tight">
@@ -381,9 +383,11 @@ export default function Safety() {
                                     Be the first to access personalized
                                     wellness services and exclusive offers.
                                 </p>
-                                <button className="mt-8 bg-[#2F7D74] hover:scale-105 transition text-white px-10 py-4 rounded-full shadow-lg">
-                                    Join early access
-                                </button>
+                                <Link href={"/early-access"}>
+                                    <button className="mt-8 bg-[#2F7D74] hover:scale-105 transition text-white px-10 py-4 rounded-full shadow-lg">
+                                        Join early access
+                                    </button>
+                                </Link>
                                 <p className="text-sm text-gray-400 mt-4">
                                     No spam. Just updates that matter.
                                 </p>
@@ -406,10 +410,10 @@ export default function Safety() {
                                     Be the first to access personalized
                                     wellness services and exclusive offers.
                                 </p>
-
+                                <Link href={"/provider"}>
                                 <button className="mt-8 bg-[#D9A548] hover:scale-105 transition text-white px-10 py-4 rounded-full shadow-lg">
                                     Become a provider
-                                </button>
+                                </button></Link>
 
                                 <p className="text-sm text-gray-400 mt-4">
                                     Quick application. We'll be in touch.
@@ -459,8 +463,8 @@ export default function Safety() {
                             </h4>
 
                             <ul className="space-y-3 text-[#C6D2CE] text-sm">
-                                <li><a href="#">About</a></li>
-                                <li><a href="#">Contact</a></li>
+                                <li><Link href="/about">About</Link></li>
+                                <li><Link href="/contact">Contact</Link></li>
                             </ul>
                         </div>
 
