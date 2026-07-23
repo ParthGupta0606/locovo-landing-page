@@ -211,9 +211,8 @@ export default function howitworks() {
             <section className="max-w-7xl mx-auto px-6 py-12">
                 <div className="grid md:grid-cols-3 gap-6">
                     <div className="bg-white rounded-3xl p-6 shadow-sm">
-                        <div className="w-12 h-12 rounded-full bg-[#EAF5F2] flex items-center justify-center mb-4">
-                            ✓
-                        </div>
+                        <img src="/Approve.svg" alt=""/>
+
                         <h3 className="text-xl font-semibold text-[#143B35]">
                             Verified Professionals
                         </h3>
@@ -224,9 +223,7 @@ export default function howitworks() {
                     </div>
 
                     <div className="bg-white rounded-3xl p-6 shadow-sm">
-                        <div className="w-12 h-12 rounded-full bg-[#FFF5E5] flex items-center justify-center mb-4">
-
-                        </div>
+                        <img src="/Location.svg" alt=""/>
                         <h3 className="text-xl font-semibold text-[#143B35]">
                             City-wide Coverage
                         </h3>
@@ -235,9 +232,7 @@ export default function howitworks() {
                         </p>
                     </div>
                     <div className="bg-white rounded-3xl p-6 shadow-sm">
-                        <div className="w-12 h-12 rounded-full bg-[#EEF4E8] flex items-center justify-center mb-4">
-                            🏠
-                        </div>
+                        <img src="/House.svg" alt=""/>
                         <h3 className="text-xl font-semibold text-[#143B35]">
                             Integrated Scheduling
                         </h3>

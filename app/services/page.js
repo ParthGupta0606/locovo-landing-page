@@ -275,9 +275,7 @@ export default function Services() {
             {/* Verification */}
             <div className="text-center border-l border-[#D8CDBF] pl-6">
 
-              <div className="w-14 h-14 rounded-full border-4 border-[#2F8A82] mx-auto flex items-center justify-center text-[#2F8A82] text-2xl">
-                ✓
-              </div>
+              <img src="/Approve.svg" alt=""/>
 
               <h3 className="font-semibold text-[#143B35] mt-4">
                 Verification First
@@ -292,9 +290,7 @@ export default function Services() {
             {/* Rollout */}
             <div className="text-center border-l border-[#D8CDBF] pl-6">
 
-              <div className="w-14 h-14 rounded-full border-4 border-[#D9A548] mx-auto flex items-center justify-center text-[#D9A548] text-2xl">
-                📍
-              </div>
+              <img src="/Location.svg" alt=""/>
 
               <h3 className="font-semibold text-[#143B35] mt-4">
                 City-by-city rollout
@@ -309,9 +305,7 @@ export default function Services() {
             {/* Convenience */}
             <div className="text-center border-l border-[#D8CDBF] pl-6">
 
-              <div className="w-14 h-14 rounded-full border-4 border-[#A6B68A] mx-auto flex items-center justify-center text-[#A6B68A] text-2xl">
-                🏠
-              </div>
+              <img src="/House.svg" alt=""/>
 
               <h3 className="font-semibold text-[#143B35] mt-4">
                 At-home convenience
