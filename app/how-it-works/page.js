@@ -55,9 +55,7 @@ export default function howitworks() {
                             </p>
                             <h1 className="text-5xl md:text-7xl font-serif text-[#143B35] leading-tight">
                                 Simple, safe,
-                                <br />
-                                and designed
-                                <br />
+                                and <br /> designed
                                 around trust.
                             </h1>
 
