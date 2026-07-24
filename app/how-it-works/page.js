@@ -1,408 +1,865 @@
 "use client";
 
-import { motion, useScroll, useTransform } from "framer-motion";
-import { useRef } from "react";
+import { motion, AnimatePresence } from "framer-motion";
 import Image from "next/image";
 import Link from "next/link";
-import { Work_Sans } from "next/font/google";
+import { useState } from "react";
+
+
+const navLinks = [
+    { href: "/", label: "Home" },
+    { href: "/about", label: "About" },
+    { href: "/how-it-works", label: "How it Works" },
+    { href: "/services", label: "Services" },
+    { href: "/customers", label: "For Customers" },
+    { href: "/professional", label: "For Professionals" },
+];
+
 export default function howitworks() {
+    const [menuOpen, setMenuOpen] = useState(false);
+    const faqs = [
+        {
+            question: "Is the platform live now?",
+            answer:
+                "Not yet. This is an early access website created to understand demand, build our community, and prepare for launch.",
+        },
+        {
+            question: "How does Locovo work for wellness professionals?",
+            answer:
+                "Professionals can apply early, complete verification, and prepare their profiles before the platform launches.",
+        },
+        {
+            question: "Can customers book a service right now?",
+            answer:
+                "Bookings are not available yet. Join the waitlist and we'll notify you as soon as Locovo launches in your city.",
+        },
+        {
+            question: "What happens after I apply as a provider?",
+            answer:
+                "Your application will be reviewed and you'll receive updates about verification and onboarding before launch.",
+        },
+        {
+            question: "How are wellness professionals verified?",
+            answer:
+                "Providers go through an identity and credential verification process before becoming available on Locovo.",
+        },
+    ];
+    const [openFAQ, setOpenFAQ] = useState(0);
     return (
-        <main className="min-h-screen  p-4 md:p-8 bg-[#F7F3EB]">
+        <main className="min-h-screen overflow-x-hidden bg-gradient-to-b from-[#F7F3EB] via-[#FCF8F2] to-[#FCF8F2]">
             <motion.nav
                 initial={{ y: -30, opacity: 0 }}
                 animate={{ y: 0, opacity: 1 }}
                 transition={{ duration: 0.6 }}
-                className="relative z-[50] mx-auto max-w-7xl bg-white  rounded-full px-8 py-4 shadow-sm flex items-center justify-between">
-                <div className="text-2xl font-bold text-[#2B7A78]">
-                    LOCOVO
-                </div>
-                <div className="hidden lg:flex gap-8 text-sm text-gray-700">
-                    <Link href="/" className="hover:scale-110 transition-all duration-300"> Home </Link>
-                    <Link href="/about" className="hover:scale-110 transition-all duration-300">About </Link>
-                    <Link href="/how-it-works" className="hover:scale-110 transition-all duration-300">How it works</Link>
-                    <Link href="/services" className="hover:scale-110 transition-all duration-300">Services</Link>
-                    <Link href="/customers" className="hover:scale-110 transition-all duration-300">For Customers</Link>
-                    <Link href="/professional" className="hover:scale-110 transition-all duration-300">For Professionals</Link>
+                className="sticky top-4 z-50 mx-auto mt-4 w-[95%] max-w-7xl rounded-full bg-white shadow-md"
+            >
+                <div className="flex items-center justify-between px-5 py-4 lg:px-8">
+
+                    {/* Logo */}
+
+                    <Link href="/" className="flex items-center gap-3">
+
+                        <Image
+                            src="/logo.svg"
+                            alt="Locovo"
+                            width={40}
+                            height={40}
+                        />
+
+                        <span className="text-2xl font-bold tracking-wide text-[#2B7A78]">
+                            LOCOVO
+                        </span>
+
+                    </Link>
+
+                    {/* Desktop Links */}
+
+                    <div className="hidden lg:flex items-center gap-8">
+
+                        {navLinks.map((link) => (
+
+                            <Link
+                                key={link.href}
+                                href={link.href}
+                                className={`transition duration-300 hover:text-[#2B7A78] ${link.href === "/how-it-works"
+                                    ? "font-semibold text-[#2B7A78]"
+                                    : "text-[#24423F]"
+                                    }`}
+                            >
+                                {link.label}
+                            </Link>
+
+                        ))}
+
+                    </div>
+
+                    {/* Desktop Buttons */}
+
+                    <div className="hidden lg:flex items-center gap-4">
+
+                        <Link href="/customer">
+
+                            <button className="rounded-full bg-[#2B7A78] px-6 py-3 text-white transition hover:scale-105">
+                                Join Waitlist
+                            </button>
+
+                        </Link>
+
+                        <Link href="/professional">
+
+                            <button className="rounded-full bg-[#D8A44D] px-6 py-3 text-white transition hover:scale-105">
+                                Become a Provider
+                            </button>
+
+                        </Link>
+
+                    </div>
+
+                    {/* Mobile Button */}
+
+                    <button
+                        onClick={() => setMenuOpen(!menuOpen)}
+                        className="lg:hidden"
+                        aria-label="Toggle navigation menu"
+                    >
+
+                        {menuOpen ? (
+
+                            <svg
+                                xmlns="http://www.w3.org/2000/svg"
+                                className="h-7 w-7"
+                                fill="none"
+                                viewBox="0 0 24 24"
+                                stroke="currentColor"
+                            >
+                                <path
+                                    strokeLinecap="round"
+                                    strokeLinejoin="round"
+                                    strokeWidth={2}
+                                    d="M6 18L18 6M6 6l12 12"
+                                />
+                            </svg>
+
+                        ) : (
+
+                            <svg
+                                xmlns="http://www.w3.org/2000/svg"
+                                className="h-7 w-7"
+                                fill="none"
+                                viewBox="0 0 24 24"
+                                stroke="currentColor"
+                            >
+                                <path
+                                    strokeLinecap="round"
+                                    strokeLinejoin="round"
+                                    strokeWidth={2}
+                                    d="M4 6h16M4 12h16M4 18h16"
+                                />
+                            </svg>
+
+                        )}
+
+                    </button>
 
                 </div>
-                <div className="hidden lg:flex gap-4">
-                    <Link href={"/early-access"}>
-                        <button className="px-5 py-2 rounded-full bg-[#2B7A78] text-white text-sm">
-                            Join the waitlist
-                        </button>
-                    </Link>
-                    <Link href={"/provider"}>
-                        <button className="px-5 py-2 rounded-full bg-[#D8A44D] text-white text-sm">
-                            Become a provider
-                        </button>
-                    </Link>
-                </div>
+
+                {/* Mobile Menu */}
+
+                {menuOpen && (
+
+                    <div className="border-t bg-white lg:hidden">
+
+                        <div className="flex flex-col gap-5 p-6">
+
+                            {navLinks.map((link) => (
+
+                                <Link
+                                    key={link.href}
+                                    href={link.href}
+                                    onClick={() => setMenuOpen(false)}
+                                    className={`${link.href === "/how-it-works"
+                                        ? "font-semibold text-[#2B7A78]"
+                                        : "text-[#24423F]"
+                                        }`}
+                                >
+                                    {link.label}
+                                </Link>
+
+                            ))}
+
+                            <Link href="/customer">
+
+                                <button className="w-full rounded-full bg-[#2B7A78] py-3 text-white">
+                                    Join Waitlist
+                                </button>
+
+                            </Link>
+
+                            <Link href="/professional">
+
+                                <button className="w-full rounded-full bg-[#D8A44D] py-3 text-white">
+                                    Become a Provider
+                                </button>
+
+                            </Link>
+
+                        </div>
+
+                    </div>
+
+                )}
+
             </motion.nav>
 
-            <section className="relative overflow-hidden bg-gradient-to-b from-[#F2E4D0] to-[#F7F3EB] ">
+            <section className="relative overflow-hidden bg-gradient-to-b from-[#F7F3EB] via-[#FCF8F2] to-[#FCF8F2]">
 
-                {/* Hero */}
-                <div className="max-w-7xl mx-auto px-6 py-24">
-                    <img
-                        src="/stem.svg"
-                        alt="Stem Right"
-                        className="absolute right-0 top-1/4 -translate-y-1/2 w-100 h-80"
-                    />
-                    <div className="max-w-7xl mx-auto px-6 py-24">
-                        <div className="text-center max-w-4xl mx-auto">
-                            <p className="text-[#C79A4A] font-medium mb-6">
+                {/* Decorative Stem */}
+
+                <Image
+                    src="/stem.svg"
+                    alt=""
+                    width={340}
+                    height={420}
+                    className="hidden xl:block absolute right-0 top-24 opacity-90"
+                />
+
+                <div className="mx-auto max-w-7xl px-5 sm:px-8 lg:px-10">
+
+                    <div className="flex min-h-[75vh] items-center justify-center py-16 sm:py-20 lg:py-28">
+
+                        <motion.div
+                            initial={{ opacity: 0, y: 35 }}
+                            animate={{ opacity: 1, y: 0 }}
+                            transition={{ duration: 0.7 }}
+                            className="mx-auto max-w-4xl text-center"
+                        >
+
+                            {/* Badge */}
+
+                            <p className="mb-6 text-sm font-semibold uppercase tracking-[0.3em] text-[#C79A4A]">
                                 LOCOVO FOR CUSTOMERS
                             </p>
-                            <h1 className="text-5xl md:text-7xl font-serif text-[#143B35] leading-tight">
+
+                            {/* Heading */}
+
+                            <h1
+                                className="
+          font-serif
+          text-4xl
+          leading-tight
+          text-[#143B35]
+          sm:text-5xl
+          lg:text-6xl
+          xl:text-7xl
+        "
+                            >
                                 Simple, safe,
-                                and <br /> designed
+                                <br />
+                                and designed
+                                <br />
                                 around trust.
                             </h1>
 
-                            <p className="mt-8 text-lg text-gray-600 max-w-2xl mx-auto">
-                                Discover trusted wellness professionals, compare services,
-                                and book appointments with confidence.
+                            {/* Description */}
+
+                            <p
+                                className="
+          mx-auto
+          mt-8
+          max-w-2xl
+          text-base
+          leading-8
+          text-gray-600
+          sm:text-lg
+        "
+                            >
+                                Discover trusted wellness professionals,
+                                compare services,
+                                and book appointments with complete confidence—
+                                all from one platform.
                             </p>
 
-                            <div className="mt-10 flex justify-center gap-4 flex-wrap">
-                                <button className="bg-[#2A746A] text-white px-8 py-4 rounded-full hover:scale-105 transition">
-                                    Find Wellness Services
-                                </button>
+                            {/* Buttons */}
 
-                                <button className="border border-[#143B35] text-[#143B35] px-8 py-4 rounded-full hover:bg-[#143B35] hover:text-white transition">
-                                    Learn More
-                                </button>
+                            <div
+                                className="
+          mt-10
+          flex
+          flex-col
+          items-center
+          justify-center
+          gap-4
+          sm:flex-row
+        "
+                            >
+
+                                <Link href="/early-access">
+
+                                    <button
+                                        className="
+              rounded-full
+              bg-[#2B7A78]
+              px-8
+              py-4
+              text-white
+              transition
+              duration-300
+              hover:scale-105
+            "
+                                    >
+                                        Find Wellness Services
+                                    </button>
+
+                                </Link>
+
+                                <Link href="/about">
+
+                                    <button
+                                        className=" rounded-full border border-[#143B35] px-8 py-4 text-[#143B35] transition duration-300 hover:bg-[#143B35] hover:text-white"
+                                    >
+                                        Learn More
+                                    </button>
+
+                                </Link>
+
                             </div>
 
-                        </div>
+                        </motion.div>
 
                     </div>
 
                 </div>
-                {/*grid*/}
-                <div className="max-w-[1600px] mx-auto px-6 pb-20">
+                <div className="pb-20 sm:pb-24 lg:pb-28">
 
-                    <div className="max-w-5xl mx-auto">
-                        <div className="grid lg:grid-cols-2 gap-8">
+                    <div className="mx-auto max-w-7xl px-5 sm:px-8 lg:px-10">
 
-                            <div className="bg-[#EAF3F3] rounded-[32px] p-10 border border-[#D4E6E6]">
-                                <span className="inline-block bg-[#D9ECEB] text-[#2A746A] text-xs font-semibold px-4 py-2 rounded-full">
+                        <div className="grid grid-cols-1 xl:grid-cols-2 gap-10">
+
+                            {/* ================= CUSTOMER CARD ================= */}
+
+                            <motion.div
+                                initial={{ opacity: 0, y: 40 }}
+                                whileInView={{ opacity: 1, y: 0 }}
+                                viewport={{ once: true }}
+                                transition={{ duration: .5 }}
+                                whileHover={{ y: -8 }}
+                                className="rounded-[32px] border border-[#D4E6E6] bg-[#EAF3F3] p-6 sm:p-8 lg:p-10 shadow-sm"
+                            >
+
+                                <span className="inline-flex rounded-full bg-[#D9ECEB] px-4 py-2 text-xs font-semibold tracking-wide text-[#2A746A]">
                                     FOR CUSTOMERS
                                 </span>
-                                <h2 className="text-3xl font-serif text-[#143B35] mb-4">
+
+                                <h2 className="mt-6 font-serif text-3xl text-[#143B35] sm:text-4xl">
                                     Find wellness that fits your routine.
                                 </h2>
 
-                                <p className="text-gray-600 mt-4 mb-8">
-                                    A clear journey from discovering services to booking with confidence.
+                                <p className="mt-4 leading-7 text-gray-600">
+                                    A simple journey from discovering wellness services
+                                    to booking trusted professionals.
                                 </p>
-                                <div className="space-y-8">
-                                    <div className="flex gap-4">
-                                        <div className="w-10 h-10 rounded-full bg-[#2A746A] text-white flex items-center justify-center">
-                                            1
+
+                                <div className="mt-10 space-y-8">
+
+                                    {[
+                                        {
+                                            title: "Explore Services",
+                                            text: "Browse massage, beauty, skincare, yoga and more."
+                                        },
+                                        {
+                                            title: "Join the Waitlist",
+                                            text: "Tell us your city and services you're interested in."
+                                        },
+                                        {
+                                            title: "Receive Updates",
+                                            text: "We'll notify you when Locovo launches near you."
+                                        },
+                                        {
+                                            title: "Book with Confidence",
+                                            text: "Connect with verified professionals when bookings open."
+                                        }
+                                    ].map((step, index) => (
+
+                                        <div
+                                            key={index}
+                                            className="flex items-start gap-5"
+                                        >
+
+                                            <div className="flex h-11 w-11 shrink-0 items-center justify-center rounded-full bg-[#2A746A] font-semibold text-white">
+                                                {index + 1}
+                                            </div>
+
+                                            <div>
+
+                                                <h4 className="font-semibold text-[#143B35]">
+                                                    {step.title}
+                                                </h4>
+
+                                                <p className="mt-2 text-sm leading-6 text-gray-600">
+                                                    {step.text}
+                                                </p>
+
+                                            </div>
+
                                         </div>
 
-                                        <div>
-                                            <h4 className="font-semibold">Explore Services</h4>
-                                            <p className="text-gray-600 text-sm">
-                                                Browse massage, beauty, skincare and more.
-                                            </p>
-                                        </div>
-                                    </div>
+                                    ))}
 
-                                    <div className="flex gap-4">
-                                        <div className="w-10 h-10 rounded-full bg-[#2A746A] text-white flex items-center justify-center">
-                                            2
-                                        </div>
-                                        <div>
-                                            <h4 className="font-semibold">Join the waitlist</h4>
-                                            <p className="text-gray-600 text-sm">
-                                                Tell us your city and services you want.
-                                            </p>
-                                        </div>
-                                    </div>
-                                    <div className="flex gap-4">
-                                        <div className="w-10 h-10 rounded-full bg-[#2A746A] text-white flex items-center justify-center">
-                                            3
-                                        </div>
-                                        <div>
-                                            <h4 className="font-semibold">Get launch updates</h4>
-                                            <p className="text-gray-600 text-sm">
-                                                We’ll notify you when Locovo launches.
-                                            </p>
-                                        </div>
-                                    </div>
-                                    <div className="flex gap-4">
-                                        <div className="w-10 h-10 rounded-full bg-[#2A746A] text-white flex items-center justify-center">
-                                            4
-                                        </div>
-                                        <div>
-                                            <h4 className="font-semibold">Book With confidence</h4>
-                                            <p className="text-gray-600 text-sm">
-                                                Once we launch, you'll be able too book with verified professionals
-                                            </p>
-                                        </div>
-                                    </div>
                                 </div>
-                                <Link href={"/early-access"}>
-                                    <button className="mt-10 bg-[#2A746A] text-white px-8 py-4 rounded-full">
+
+                                <Link href="/customer">
+
+                                    <button className="mt-10 rounded-full bg-[#2A746A] px-8 py-4 text-white transition duration-300 hover:scale-105">
                                         Join Early Access
                                     </button>
+
                                 </Link>
-                            </div>
 
+                            </motion.div>
 
-                            <div className="bg-[#FBF6EE] rounded-[32px] p-10 border border-[#F1E3C9]">
-                                <span className="inline-block bg-[#F2D9A8] text-[#C08A1A] text-xs font-semibold px-4 py-2 rounded-full">
+                            {/*  PROVIDER CARD  */}
+
+                            <motion.div
+                                initial={{ opacity: 0, y: 40 }}
+                                whileInView={{ opacity: 1, y: 0 }}
+                                viewport={{ once: true }}
+                                transition={{ duration: .6 }}
+                                whileHover={{ y: -8 }}
+                                className="rounded-[32px] border border-[#F1E3C9] bg-[#FBF6EE] p-6 sm:p-8 lg:p-10 shadow-sm"
+                            >
+
+                                <span className="inline-flex rounded-full bg-[#F2D9A8] px-4 py-2 text-xs font-semibold tracking-wide text-[#C08A1A]">
                                     FOR PROFESSIONALS
                                 </span>
-                                <h2 className="text-3xl font-serif text-[#143B35] mb-4">
-                                    Grow a practice with confidence
+
+                                <h2 className="mt-6 font-serif text-3xl text-[#143B35] sm:text-4xl">
+                                    Grow your practice with confidence.
                                 </h2>
-                                <p className="text-gray-600">
-                                    A simple process to join early and prepare for launch
+
+                                <p className="mt-4 leading-7 text-gray-600">
+                                    A straightforward onboarding experience
+                                    designed for wellness professionals.
                                 </p>
-                                <div className="space-y-8">
-                                    <div className="flex gap-4">
-                                        <div className="w-10 h-10 rounded-full bg-[#D8A54B] text-white flex items-center justify-center">
-                                            1
+
+                                <div className="mt-10 space-y-8">
+
+                                    {[
+                                        {
+                                            title: "Apply as a Provider",
+                                            text: "Share your services, location and professional background."
+                                        },
+                                        {
+                                            title: "Complete Verification",
+                                            text: "Submit the necessary documents for review."
+                                        },
+                                        {
+                                            title: "Choose Service Areas",
+                                            text: "Select where and when you want to work."
+                                        },
+                                        {
+                                            title: "Prepare for Launch",
+                                            text: "Start connecting with customers after launch."
+                                        }
+                                    ].map((step, index) => (
+
+                                        <div
+                                            key={index}
+                                            className="flex items-start gap-5"
+                                        >
+
+                                            <div className="flex h-11 w-11 shrink-0 items-center justify-center rounded-full bg-[#D8A44D] font-semibold text-white">
+                                                {index + 1}
+                                            </div>
+
+                                            <div>
+
+                                                <h4 className="font-semibold text-[#143B35]">
+                                                    {step.title}
+                                                </h4>
+
+                                                <p className="mt-2 text-sm leading-6 text-gray-600">
+                                                    {step.text}
+                                                </p>
+
+                                            </div>
+
                                         </div>
 
-                                        <div>
-                                            <h4 className="font-semibold">Apply as a provider </h4>
-                                            <p className="text-gray-600 text-sm">
-                                                Share your services, location, and professional background.
-                                            </p>
-                                        </div>
-                                    </div>
+                                    ))}
 
-                                    <div className="flex gap-4">
-                                        <div className="w-10 h-10 rounded-full bg-[#D8A54B] text-white flex items-center justify-center">
-                                            2
-                                        </div>
-                                        <div>
-                                            <h4 className="font-semibold">Complete verification</h4>
-                                            <p className="text-gray-600 text-sm">
-                                                Submit relevant details for review.
-                                            </p>
-                                        </div>
-                                    </div>
-                                    <div className="flex gap-4">
-                                        <div className="w-10 h-10 rounded-full bg-[#D8A54B] text-white flex items-center justify-center">
-                                            3
-                                        </div>
-                                        <div>
-                                            <h4 className="font-semibold">Set your service area</h4>
-                                            <p className="text-gray-600 text-sm">
-                                                Choose where and when you’d like to work.
-                                            </p>
-                                        </div>
-                                    </div>
-                                    <div className="flex gap-4">
-                                        <div className="w-10 h-10 rounded-full bg-[#D8A54B] text-white flex items-center justify-center">
-                                            4
-                                        </div>
-                                        <div>
-                                            <h4 className="font-semibold">Prepare for launch</h4>
-                                            <p className="text-gray-600 text-sm">
-                                                Connect with customers once provider onboarding opens after launch.
-                                            </p>
-                                        </div>
-                                    </div>
                                 </div>
-                                <Link href={"/provider"}>
-                                    <button className="px-5 py-2 rounded-full bg-[#D8A44D] text-white text-sm">
-                                        Become a provider
-                                    </button>
-                                </Link>
-                            </div>
 
+                                <Link href="/professional">
+
+                                    <button className="mt-10 rounded-full bg-[#D8A44D] px-8 py-4 text-white transition duration-300 hover:scale-105">
+                                        Become a Provider
+                                    </button>
+
+                                </Link>
+
+                            </motion.div>
 
                         </div>
+
                     </div>
 
                 </div>
 
             </section>
 
+            {/* WHY CHOOSE LOCOVO  */}
 
+            <section className="bg-[#FCF8F2] py-16 sm:py-20 lg:py-24">
 
-            <section className="max-w-7xl mx-auto px-6 py-12 bg-[#F7F3EB]">
-                <div className="grid md:grid-cols-3 gap-6">
-                    <div className="bg-white rounded-3xl p-6 shadow-sm">
-                        <img src="/Approve.svg" alt="" />
+                <div className="mx-auto max-w-7xl px-5 sm:px-8 lg:px-10">
 
-                        <h3 className="text-xl font-semibold text-[#143B35]">
-                            Verified Professionals
-                        </h3>
+                    {/* Cards */}
 
-                        <p className="mt-3 text-gray-600">
-                            Every provider is carefully reviewed before joining Locovo.
-                        </p>
+                    <div className="grid grid-cols-1 gap-6 md:grid-cols-2 xl:grid-cols-3">
+
+                        {/* Card 1 */}
+
+                        <motion.div
+                            whileHover={{ y: -8 }}
+                            transition={{ duration: .25 }}
+                            className="rounded-3xl bg-white p-8 shadow-sm transition"
+                        >
+
+                            <div className="mb-6 flex h-16 w-16 items-center justify-center rounded-2xl bg-[#EAF3F3]">
+
+                                <Image
+                                    src="/Approve.svg"
+                                    alt="Verified Professionals"
+                                    width={38}
+                                    height={38}
+                                />
+
+                            </div>
+
+                            <h3 className="text-2xl font-semibold text-[#143B35]">
+                                Verified Professionals
+                            </h3>
+
+                            <p className="mt-4 leading-7 text-gray-600">
+                                Every wellness provider is carefully reviewed
+                                before joining Locovo, giving you confidence
+                                in every booking.
+                            </p>
+
+                        </motion.div>
+
+                        {/* Card 2 */}
+
+                        <motion.div
+                            whileHover={{ y: -8 }}
+                            transition={{ duration: .25 }}
+                            className="rounded-3xl bg-white p-8 shadow-sm transition"
+                        >
+
+                            <div className="mb-6 flex h-16 w-16 items-center justify-center rounded-2xl bg-[#FFF1DA]">
+
+                                <Image
+                                    src="/Location.svg"
+                                    alt="City Coverage"
+                                    width={38}
+                                    height={38}
+                                />
+
+                            </div>
+
+                            <h3 className="text-2xl font-semibold text-[#143B35]">
+                                City-wide Coverage
+                            </h3>
+
+                            <p className="mt-4 leading-7 text-gray-600">
+                                Discover wellness professionals near you
+                                and easily find services available
+                                throughout your city.
+                            </p>
+
+                        </motion.div>
+
+                        {/* Card 3 */}
+
+                        <motion.div
+                            whileHover={{ y: -8 }}
+                            transition={{ duration: .25 }}
+                            className="rounded-3xl bg-white p-8 shadow-sm transition"
+                        >
+
+                            <div className="mb-6 flex h-16 w-16 items-center justify-center rounded-2xl bg-[#EAF3F3]">
+
+                                <Image
+                                    src="/House.svg"
+                                    alt="Scheduling"
+                                    width={38}
+                                    height={38}
+                                />
+
+                            </div>
+
+                            <h3 className="text-2xl font-semibold text-[#143B35]">
+                                Easy Scheduling
+                            </h3>
+
+                            <p className="mt-4 leading-7 text-gray-600">
+                                Book appointments, manage your schedule,
+                                and stay organized with a simple
+                                and intuitive experience.
+                            </p>
+
+                        </motion.div>
+
                     </div>
 
-                    <div className="bg-white rounded-3xl p-6 shadow-sm">
-                        <img src="/Location.svg" alt="" />
-                        <h3 className="text-xl font-semibold text-[#143B35]">
-                            City-wide Coverage
-                        </h3>
-                        <p className="mt-3 text-gray-600">
-                            Discover wellness services near you.
-                        </p>
-                    </div>
-                    <div className="bg-white rounded-3xl p-6 shadow-sm">
-                        <img src="/House.svg" alt="" />
-                        <h3 className="text-xl font-semibold text-[#143B35]">
-                            Integrated Scheduling
-                        </h3>
-                        <p className="mt-3 text-gray-600">
-                            Manage appointments and bookings easily.
-                        </p>
-                    </div>
                 </div>
+
             </section>
 
-
-            <section className="py-24 mt-16"
+            <section
+                className="relative overflow-hidden py-24 mt-16"
                 style={{
                     backgroundImage: "url('/bg.svg')",
                     backgroundRepeat: "repeat",
                     backgroundSize: "33.33% auto",
-                }}>
+                }}
+            >
 
-                <div className="max-w-4xl mx-auto px-6">
-                    <h2 className="text-center text-5xl font-serif text-[#143B35] mb-12">
-                        Questions, answered.
-                    </h2>
+                <div
+                    className="absolute inset-0 pointer-events-none opacity-10"
+                    style={{
+                        backgroundImage: "url('/leaf-top-left.svg')",
+                        backgroundRepeat: "repeat",
+                        backgroundSize: "250px",
+                    }}
+                />
+
+                <div className="relative mx-auto max-w-4xl px-6">
+
+                    {/* Heading */}
+
+                    <div className="mb-12 text-center">
+
+                        <div className="mb-4 flex items-center justify-center gap-3">
+
+                            <div className="h-[3px] w-12 rounded-full bg-[#E8A04A]" />
+
+                            <p className="text-xs uppercase tracking-[0.45em] text-[#8BA18E]">
+                                FAQ
+                            </p>
+
+                        </div>
+
+                        <h2 className="font-serif text-4xl text-[#23443E] sm:text-5xl">
+                            Questions, answered.
+                        </h2>
+
+                    </div>
+
+                    {/* FAQ */}
+
                     <div className="space-y-4">
-                        <details className="bg-white rounded-2xl p-6">
-                            <summary className="cursor-pointer font-medium">
-                                What types of wellness services are available?
-                            </summary>
-                            <p className="mt-4 text-gray-600">
-                                Massage therapy, yoga, fitness coaching, nutrition and more.
-                            </p>
-                        </details>
 
-                        <details className="bg-white rounded-2xl p-6">
-                            <summary className="cursor-pointer font-medium">
-                                How does booking work?
-                            </summary>
+                        {faqs.map((faq, index) => (
 
-                            <p className="mt-4 text-gray-600">
-                                Choose a provider, select a time slot and confirm your booking.
-                            </p>
-                        </details>
+                            <motion.div
+                                key={index}
+                                layout
+                                className="overflow-hidden rounded-2xl bg-white shadow-md"
+                            >
 
-                        <details className="bg-white rounded-2xl p-6">
-                            <summary className="cursor-pointer font-medium">
-                                Are providers verified?
-                            </summary>
+                                <button
+                                    onClick={() =>
+                                        setOpenFAQ(openFAQ === index ? -1 : index)
+                                    }
+                                    className="flex w-full items-center justify-between p-6 text-left"
+                                >
 
-                            <p className="mt-4 text-gray-600">
-                                Yes. All professionals go through a verification process.
-                            </p>
-                        </details>
+                                    <span className="pr-5 text-base font-medium text-[#23443E]">
+                                        {faq.question}
+                                    </span>
+
+                                    <motion.span
+                                        animate={{
+                                            rotate: openFAQ === index ? 45 : 0,
+                                        }}
+                                        transition={{
+                                            duration: 0.25,
+                                        }}
+                                        className="text-3xl font-light text-[#2B7A78]"
+                                    >
+                                        +
+                                    </motion.span>
+
+                                </button>
+
+                                <AnimatePresence>
+
+                                    {openFAQ === index && (
+
+                                        <motion.div
+                                            initial={{ height: 0, opacity: 0 }}
+                                            animate={{
+                                                height: "auto",
+                                                opacity: 1,
+                                            }}
+                                            exit={{
+                                                height: 0,
+                                                opacity: 0,
+                                            }}
+                                            transition={{
+                                                duration: 0.3,
+                                            }}
+                                            className="overflow-hidden"
+                                        >
+
+                                            <p className="px-6 pb-6 leading-8 text-gray-600">
+                                                {faq.answer}
+                                            </p>
+
+                                        </motion.div>
+
+                                    )}
+
+                                </AnimatePresence>
+
+                            </motion.div>
+
+                        ))}
 
                     </div>
 
                 </div>
+
             </section>
 
+            <section className="relative overflow-hidden rounded-t-3xl bg-[#F8F6F1] py-20">
 
-            <section className="py-24 bg-[#F7F3EB]">
-                <div className="max-w-7xl mx-auto px-6">
-                    <div className="bg-[#F8F3EC] rounded-[32px] p-12 relative overflow-hidden">
-                        {/* Heading */}
+                <div className="relative z-10 mx-auto max-w-5xl px-6 text-center">
+                    <h2 className="font-serif text-4xl leading-tight text-[#23443E] sm:text-5xl">
+                        Wellness, your way.
+                        <br />
+                        Coming soon.
+                    </h2>
+
+                    <p className="mx-auto mt-5 max-w-lg text-gray-500">
+                        Personalized wellness services at home and exclusive experiences at premium destinations.
+                    </p>
+                </div>
+
+                <div className="relative z-10 mx-auto mt-16 max-w-5xl px-6">
+                    <div className="grid grid-cols-1 gap-12 lg:grid-cols-[1fr_auto_1fr] lg:items-center">
+
+                        {/* Customer */}
                         <div className="text-center">
-                            <h2 className="text-5xl md:text-6xl font-serif text-[#143B35] leading-tight">
-                                Wellness, your way.<br />Coming soon.
-                            </h2>
-                            <p className="text-gray-500 mt-6 max-w-xl mx-auto">
-                                Personalized wellness services at home and
-                                exclusive experiences at premium destinations.
+                            <div className="mx-auto mb-6 flex h-14 w-14 items-center justify-center rounded-full bg-[#E9F0E9]">
+                                <img src="/human-icon.svg" alt="" />
+                            </div>
+
+                            <h3 className="text-2xl font-semibold text-[#23443E]">
+                                LOOKING FOR A
+                                <br />
+                                WELLNESS SERVICE?
+                            </h3>
+
+                            <p className="mt-4 text-gray-500">
+                                Be the first to access personalized wellness services and exclusive offers.
+                            </p>
+
+                            <Link href="/customer">
+                                <button className="mt-8 rounded-full bg-[#2A746A] px-8 py-4 text-white">
+                                    Join Early Access
+                                </button>
+                            </Link>
+
+                            <p className="mt-4 text-xs text-gray-400">
+                                ✓ No spam. Just updates that matter.
                             </p>
                         </div>
-                        {/* Content */}
-                        <div className="grid md:grid-cols-2 mt-20 relative">
-                            {/* Divider */}
-                            <div className="hidden md:block absolute left-1/2 top-0 bottom-0 w-px bg-gray-300 -translate-x-1/2">
-                                <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-12 h-12 rounded-full bg-white border flex items-center justify-center text-sm">
-                                    OR
-                                </div>
+
+                        {/* Divider */}
+                        <div className="hidden lg:flex flex-col items-center">
+                            <div className="h-40 w-px bg-[#CFC8BC]" />
+                            <div className="flex h-10 w-10 items-center justify-center rounded-full border bg-white text-xs">
+                                OR
                             </div>
-                            {/* Left */}
-                            <div className="text-center px-10">
-                                <div className="w-20 h-20 mx-auto rounded-full bg-[#E8F1E7] flex items-center justify-center mb-6">
-                                    <img
-                                        src="/wellness.svg"
-                                        alt=""
-                                        className="w-16 h-16"
-                                    />
-                                </div>
-                                <h3 className="text-3xl font-bold text-[#143B35] uppercase">
-                                    Looking for a<br />Wellness Service?
-                                </h3>
-                                <p className="text-gray-500 mt-4">
-                                    Be the first to access personalized
-                                    wellness services and exclusive offers.
-                                </p>
-                                <Link href={"/early-access"}>
-                                    <button className="mt-8 bg-[#2F7D74] hover:scale-105 transition text-white px-10 py-4 rounded-full shadow-lg">
-                                        Join early access
-                                    </button>
-                                </Link>
-                                <p className="text-sm text-gray-400 mt-4">
-                                    No spam. Just updates that matter.
-                                </p>
+                            <div className="h-40 w-px bg-[#CFC8BC]" />
+                        </div>
+
+                        {/* Provider */}
+                        <div className="text-center">
+                            <div className="mx-auto mb-6 flex h-14 w-14 items-center justify-center rounded-full bg-[#F8E9C9]">
+                                <img src="/suitcase.svg" alt="" />
                             </div>
 
-                            {/* Right */}
-                            <div className="text-center px-10 mt-12 md:mt-0">
-                                <div className="w-20 h-20 mx-auto rounded-full bg-[#F6E7C6] flex items-center justify-center mb-6">
-                                    <img
-                                        src="/provider.svg"
-                                        alt=""
-                                        className="w-14 h-14"
-                                    />
-                                </div>
+                            <h3 className="text-2xl font-semibold text-[#23443E]">
+                                OFFERING A
+                                <br />
+                                WELLNESS SERVICE?
+                            </h3>
 
-                                <h3 className="text-3xl font-bold text-[#143B35] uppercase">
-                                    Looking for a<br />Wellness Provider?
-                                </h3>
-                                <p className="text-gray-500 mt-4">
-                                    Be the first to access personalized
-                                    wellness services and exclusive offers.
-                                </p>
+                            <p className="mt-4 text-gray-500">
+                                Be the first to join as a verified provider and get early access to new clients.
+                            </p>
 
-                                <Link href={"/provider"}><button className="mt-8 bg-[#D9A548] hover:scale-105 transition text-white px-10 py-4 rounded-full shadow-lg">
-                                    Become a provider
-                                </button></Link>
+                            <Link href="/professional">
+                                <button className="mt-8 rounded-full bg-[#D8A03B] px-8 py-4 text-white">
+                                    Become a Provider
+                                </button>
+                            </Link>
 
-                                <p className="text-sm text-gray-400 mt-4">
-                                    Quick application. We'll be in touch.
-                                </p>
-                            </div>
-                            <Image
-                                src="/mortar.svg"
-                                alt=""
-                                width={160}
-                                height={160}
-                                className="absolute bottom-0 left-0 opacity-100" />
-                            <Image
-                                src="/pebble.svg"
-                                alt=""
-                                width={190}
-                                height={120}
-                                className="absolute bottom-0 right-0 opacity-100" />
-
+                            <p className="mt-4 text-xs text-gray-400">
+                                ✓ Quick application. We'll be in touch.
+                            </p>
                         </div>
 
                     </div>
                 </div>
 
+                {/* Decorative Images */}
+
+                <Image
+                    src="/flower3.svg"
+                    alt=""
+                    width={170}
+                    height={170}
+                    className="pointer-events-none absolute bottom-0 left-0 hidden md:block"
+                />
+
+                <Image
+                    src="/grass.svg"
+                    alt=""
+                    width={150}
+                    height={110}
+                    className="pointer-events-none absolute bottom-0 left-8 hidden lg:block"
+                />
+
+                <Image
+                    src="/leaf-left.svg"
+                    alt=""
+                    width={160}
+                    height={160}
+                    className="pointer-events-none absolute bottom-0 right-24 hidden xl:block"
+                />
+
+                <Image
+                    src="/leaf-right.svg"
+                    alt=""
+                    width={180}
+                    height={180}
+                    className="pointer-events-none absolute bottom-0 right-0 hidden lg:block"
+                />
+
+                <Image
+                    src="/grass-right.svg"
+                    alt=""
+                    width={170}
+                    height={120}
+                    className="pointer-events-none absolute bottom-0 right-8 hidden lg:block"
+                />
 
             </section>
+
             <footer className="bg-[#0F3432] text-white">
                 <div className="max-w-7xl mx-auto px-8 py-16">
                     {/* Top Footer */}

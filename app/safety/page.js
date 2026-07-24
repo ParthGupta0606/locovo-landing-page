@@ -1,43 +1,196 @@
 "use client";
 
-import { motion } from "framer-motion";
+import { motion, useScroll, useTransform } from "framer-motion";
 import Image from "next/image";
 import Link from "next/link";
+import { useRef } from "react";
+import { useState } from "react";
+const navLinks = [
+    { href: "/", label: "Home" },
+    { href: "/about", label: "About" },
+    { href: "/how-it-works", label: "How it Works" },
+    { href: "/services", label: "Services" },
+    { href: "/customers", label: "For Customers" },
+    { href: "/professional", label: "For Professionals" },
+];
 export default function Safety() {
+    const sectionRef = useRef(null)
+    const [menuOpen, setMenuOpen] = useState(false);
+    const [openFAQ, setOpenFAQ] = useState(0);
+    const { scrollYProgress } = useScroll({
+        target: sectionRef,
+        offset: ["start end", "end start"],
+    });
+    const flowerX = useTransform(scrollYProgress, [0, 0.5], [300, 0]);
+    const flowerRotate = useTransform(scrollYProgress, [0, 0.5], [-360, 0]);
+    const flowerOpacity = useTransform(scrollYProgress, [0, 0.25], [0, 1,]);
     return (
 
-        <main className="min-h-screen bg-gradient-to-b bg-[#F7F3EB] ">
+        <main className="min-h-screen bg-gradient-to-b from-[#F7F3EB] via-[#FCF8F2] to-[#FCF8F2] ">
             {/* Navbar */}
             <motion.nav
                 initial={{ y: -30, opacity: 0 }}
                 animate={{ y: 0, opacity: 1 }}
                 transition={{ duration: 0.6 }}
-                className="relative z-[50] mx-auto max-w-7xl bg-white  rounded-full px-8 py-4 shadow-sm flex items-center justify-between">
-                <div className="text-2xl font-bold text-[#2B7A78]">
-                    LOCOVO
-                </div>
-                <div className="hidden lg:flex gap-8 text-sm text-gray-700">
-                    <Link href="/" className="hover:scale-110 transition-all duration-300"> Home </Link>
-                    <Link href="/about" className="nav-link">About </Link>
-                    <Link href="/how-it-works" className="hover:scale-110 transition-all duration-300">How it works</Link>
-                    <Link href="/services" className="hover:scale-110 transition-all duration-300">Services</Link>
-                    <Link href="/customers" className="hover:scale-110 transition-all duration-300">For Customers</Link>
-                    <Link href="/professional" className="hover:scale-110 transition-all duration-300">For Professionals</Link>
-                </div>
-                <div className="hidden lg:flex gap-4">
-                    <Link href={"/early-access"}>
-                    <button className="px-5 py-2 rounded-full bg-[#2B7A78] text-white text-sm">
-                        Join the waitlist
-                    </button>
-                    </Link>
-                    <Link href={"/provider"}>
-                        <button className="px-5 py-2 rounded-full bg-[#D8A44D] text-white text-sm">
-                            Become a provider
-                        </button>
-                    </Link>
-                </div>
-            </motion.nav>
+                className="sticky top-4 z-50 mx-auto mt-4 w-[95%] max-w-7xl rounded-full bg-white shadow-md"
+            >
+                <div className="flex items-center justify-between px-5 py-4 lg:px-8">
 
+                    {/* Logo */}
+
+                    <Link href="/" className="flex items-center gap-3">
+
+                        <Image
+                            src="/logo.svg"
+                            alt="Locovo"
+                            width={40}
+                            height={40}
+                        />
+
+                        <span className="text-2xl font-bold tracking-wide text-[#2B7A78]">
+                            LOCOVO
+                        </span>
+
+                    </Link>
+
+                    {/* Desktop Links */}
+
+                    <div className="hidden lg:flex items-center gap-8">
+
+                        {navLinks.map((link) => (
+
+                            <Link
+                                key={link.href}
+                                href={link.href}
+                                className={`transition duration-300 hover:text-[#2B7A78] ${link.href === "/how-it-works"
+                                    ? "font-semibold text-[#2B7A78]"
+                                    : "text-[#24423F]"
+                                    }`}
+                            >
+                                {link.label}
+                            </Link>
+
+                        ))}
+
+                    </div>
+
+                    {/* Desktop Buttons */}
+
+                    <div className="hidden lg:flex items-center gap-4">
+
+                        <Link href="/customer">
+
+                            <button className="rounded-full bg-[#2B7A78] px-6 py-3 text-white transition hover:scale-105">
+                                Join Waitlist
+                            </button>
+
+                        </Link>
+
+                        <Link href="/professional">
+
+                            <button className="rounded-full bg-[#D8A44D] px-6 py-3 text-white transition hover:scale-105">
+                                Become a Provider
+                            </button>
+
+                        </Link>
+
+                    </div>
+
+                    {/* Mobile Button */}
+
+                    <button
+                        onClick={() => setMenuOpen(!menuOpen)}
+                        className="lg:hidden"
+                        aria-label="Toggle navigation menu"
+                    >
+
+                        {menuOpen ? (
+
+                            <svg
+                                xmlns="http://www.w3.org/2000/svg"
+                                className="h-7 w-7"
+                                fill="none"
+                                viewBox="0 0 24 24"
+                                stroke="currentColor"
+                            >
+                                <path
+                                    strokeLinecap="round"
+                                    strokeLinejoin="round"
+                                    strokeWidth={2}
+                                    d="M6 18L18 6M6 6l12 12"
+                                />
+                            </svg>
+
+                        ) : (
+
+                            <svg
+                                xmlns="http://www.w3.org/2000/svg"
+                                className="h-7 w-7"
+                                fill="none"
+                                viewBox="0 0 24 24"
+                                stroke="currentColor"
+                            >
+                                <path
+                                    strokeLinecap="round"
+                                    strokeLinejoin="round"
+                                    strokeWidth={2}
+                                    d="M4 6h16M4 12h16M4 18h16"
+                                />
+                            </svg>
+
+                        )}
+
+                    </button>
+
+                </div>
+
+                {/* Mobile Menu */}
+
+                {menuOpen && (
+
+                    <div className="border-t bg-white lg:hidden">
+
+                        <div className="flex flex-col gap-5 p-6">
+
+                            {navLinks.map((link) => (
+
+                                <Link
+                                    key={link.href}
+                                    href={link.href}
+                                    onClick={() => setMenuOpen(false)}
+                                    className={`${link.href === "/how-it-works"
+                                        ? "font-semibold text-[#2B7A78]"
+                                        : "text-[#24423F]"
+                                        }`}
+                                >
+                                    {link.label}
+                                </Link>
+
+                            ))}
+
+                            <Link href="/customer">
+
+                                <button className="w-full rounded-full bg-[#2B7A78] py-3 text-white">
+                                    Join Waitlist
+                                </button>
+
+                            </Link>
+
+                            <Link href="/professional">
+
+                                <button className="w-full rounded-full bg-[#D8A44D] py-3 text-white">
+                                    Become a Provider
+                                </button>
+
+                            </Link>
+
+                        </div>
+
+                    </div>
+
+                )}
+
+            </motion.nav>
             <section className="py-24 bg-gradient-to-b bg-[#F2E4D0]  to-[#F7F3EB]">
                 <div className="max-w-6xl mx-auto px-6 text-center">
 
@@ -206,32 +359,37 @@ export default function Safety() {
                 </div>
             </section>
 
-            <section className="bg-[#E7EFE3] py-20 mt-10">
-                <div className="absolute -right-20 bottom-3 pointer-events-none">
-                    {/* Bottom Right Decoration */}
-                    <div className="absolute bottom-0 right-0 pointer-events-none overflow-hidden">
+            <section ref={sectionRef} className="relative overflow-hidden bg-[#F9F8E4] py-20 mt-10">
 
-                        {/* Outer Green Arc */}
-                        <div className="absolute bottom-0 right-0 w-[180px] h-[180px]">
-                            <div className="absolute inset-0 rounded-tl-full border-l-[14px] border-t-[14px] border-[#A6B88C]" />
-                        </div>
+                {/* Bottom Right Decoration */}
+                <div className="pointer-events-none absolute right-0 top-10 hidden lg:block">
+                    <div className="relative h-60 w-44">
 
-                        {/* Inner Peach Arc */}
-                        <div className="absolute bottom-0 right-[14px] w-[145px] h-[145px]">
-                            <div className="absolute inset-0 rounded-tl-full border-l-[10px] border-t-[10px] border-[#E9C8B5]" />
-                        </div>
+                        {/* Curves */}
+                        <Image
+                            src="/Curves2.svg"
+                            alt=""
+                            width={180}
+                            height={240}
+                            className="absolute inset-0 h-full w-full object-contain"
+                        />
 
                         {/* Flower */}
-                        <Image
+                        <motion.img
                             src="/flower.svg"
                             alt=""
-                            width={80}
-                            height={80}
-                            className="absolute bottom-2 right-2 z-10"
+                            style={{
+                                x: flowerX,
+                                rotate: flowerRotate,
+                                opacity: flowerOpacity,
+                            }}
+                            className="absolute bottom-5 left-5 h-24 w-24"
                         />
-                    </div>
 
+                    </div>
                 </div>
+
+
                 <div className="max-w-5xl mx-auto text-center px-6">
 
                     <h2 className="text-5xl font-serif text-[#143B35]">
@@ -251,7 +409,7 @@ export default function Safety() {
             <section className="relative py-24 overflow-hidden bg-[#F9F7F2]">
 
                 {/* Background Pattern */}
-                <div className="absolute inset-0 grid grid-cols-5 grid-rows-2 opacity-100 pointer-events-none">
+                <div className="absolute inset-0 grid grid-cols-5 grid-rows-2 opacity-30 pointer-events-none">
                     {[...Array(10)].map((_, index) => (
                         <div key={index} className="flex items-center justify-center" >
                             <Image
@@ -268,23 +426,40 @@ export default function Safety() {
 
                     {/* Top Pills */}
                     <div className="flex flex-wrap justify-center gap-4 mb-16">
-
                         {[
-                            "Reviewed providers",
-                            "Service-category checks",
-                            "Safer launch standards",
-                            "Transparent expectations",
+                            {
+                                text: "Reviewed providers",
+                                icon: "/Approve2.svg",
+                            },
+                            {
+                                text: "Service-category checks",
+                                icon: "/handshake3.svg",
+                            },
+                            {
+                                text: "Safer launch standards",
+                                icon: "/shield2.svg",
+                            },
+                            {
+                                text: "Transparent expectations",
+                                icon: "/star.svg",
+                            },
                         ].map((item) => (
                             <div
-                                key={item}
-                                className=" bg-white  px-6  py-3 rounded-xl  border border-gray-100 shadow-sm  hover:-translate-y-1  hover:shadow-md  transition-all duration-300"
+                                key={item.text}
+                                className="flex items-center gap-3 bg-white px-6 py-3 rounded-xl border border-gray-100 shadow-sm hover:-translate-y-1 hover:shadow-md transition-all duration-300"
                             >
-                                <span className="text-sm text-[#143B35] font-medium">
-                                    {item}
+                                <Image
+                                    src={item.icon}
+                                    alt=""
+                                    width={22}
+                                    height={22}
+                                />
+
+                                <span className="text-sm font-medium text-[#143B35]">
+                                    {item.text}
                                 </span>
                             </div>
                         ))}
-
                     </div>
 
                     {/* Main Content */}
@@ -353,96 +528,130 @@ export default function Safety() {
 
             </section>
 
-            <section className="py-24 bg-[#F7F3EB]">
-                <div className="max-w-7xl mx-auto px-6">
-                    <div className="bg-[#F8F3EC] rounded-[32px] p-12 relative overflow-hidden">
-                        {/* Heading */}
+            <section className="relative overflow-hidden rounded-t-3xl bg-[#F8F6F1] py-20">
+
+                <div className="relative z-10 mx-auto max-w-5xl px-6 text-center">
+                    <h2 className="font-serif text-4xl leading-tight text-[#23443E] sm:text-5xl">
+                        Wellness, your way.
+                        <br />
+                        Coming soon.
+                    </h2>
+
+                    <p className="mx-auto mt-5 max-w-lg text-gray-500">
+                        Personalized wellness services at home and exclusive experiences at premium destinations.
+                    </p>
+                </div>
+
+                <div className="relative z-10 mx-auto mt-16 max-w-5xl px-6">
+                    <div className="grid grid-cols-1 gap-12 lg:grid-cols-[1fr_auto_1fr] lg:items-center">
+
+                        {/* Customer */}
                         <div className="text-center">
-                            <h2 className="text-5xl md:text-6xl font-serif text-[#143B35] leading-tight">
-                                Wellness, your way.<br />Coming soon.
-                            </h2>
-                            <p className="text-gray-500 mt-6 max-w-xl mx-auto">
-                                Personalized wellness services at home and
-                                exclusive experiences at premium destinations.
+                            <div className="mx-auto mb-6 flex h-14 w-14 items-center justify-center rounded-full bg-[#E9F0E9]">
+                                <img src="/human-icon.svg" alt="" />
+                            </div>
+
+                            <h3 className="text-2xl font-semibold text-[#23443E]">
+                                LOOKING FOR A
+                                <br />
+                                WELLNESS SERVICE?
+                            </h3>
+
+                            <p className="mt-4 text-gray-500">
+                                Be the first to access personalized wellness services and exclusive offers.
+                            </p>
+
+                            <Link href="/customer">
+                                <button className="mt-8 rounded-full bg-[#2A746A] px-8 py-4 text-white">
+                                    Join Early Access
+                                </button>
+                            </Link>
+
+                            <p className="mt-4 text-xs text-gray-400">
+                                ✓ No spam. Just updates that matter.
                             </p>
                         </div>
-                        {/* Content */}
-                        <div className="grid md:grid-cols-2 mt-20 relative">
-                            {/* Divider */}
-                            <div className="hidden md:block absolute left-1/2 top-0 bottom-0 w-px bg-gray-300 -translate-x-1/2">
-                                <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-12 h-12 rounded-full bg-white border flex items-center justify-center text-sm">
-                                    OR
-                                </div>
+
+                        {/* Divider */}
+                        <div className="hidden lg:flex flex-col items-center">
+                            <div className="h-40 w-px bg-[#CFC8BC]" />
+                            <div className="flex h-10 w-10 items-center justify-center rounded-full border bg-white text-xs">
+                                OR
                             </div>
-                            {/* Left */}
-                            <div className="text-center px-10">
-                                <div className="w-20 h-20 mx-auto rounded-full bg-[#E8F1E7] flex items-center justify-center mb-6">
-                                    <img
-                                        src="/wellness.svg"
-                                        alt=""
-                                        className="w-16 h-16"
-                                    />
-                                </div>
-                                <h3 className="text-3xl font-bold text-[#143B35] uppercase">
-                                    Looking for a<br />Wellness Service?
-                                </h3>
-                                <p className="text-gray-500 mt-4">
-                                    Be the first to access personalized
-                                    wellness services and exclusive offers.
-                                </p>
-                                <Link href={"/early-access"}>
-                                    <button className="mt-8 bg-[#2F7D74] hover:scale-105 transition text-white px-10 py-4 rounded-full shadow-lg">
-                                        Join early access
-                                    </button>
-                                </Link>
-                                <p className="text-sm text-gray-400 mt-4">
-                                    No spam. Just updates that matter.
-                                </p>
+                            <div className="h-40 w-px bg-[#CFC8BC]" />
+                        </div>
+
+                        {/* Provider */}
+                        <div className="text-center">
+                            <div className="mx-auto mb-6 flex h-14 w-14 items-center justify-center rounded-full bg-[#F8E9C9]">
+                                <img src="/suitcase.svg" alt="" />
                             </div>
 
-                            {/* Right */}
-                            <div className="text-center px-10 mt-12 md:mt-0">
-                                <div className="w-20 h-20 mx-auto rounded-full bg-[#F6E7C6] flex items-center justify-center mb-6">
-                                    <img
-                                        src="/provider.svg"
-                                        alt=""
-                                        className="w-14 h-14"
-                                    />
-                                </div>
+                            <h3 className="text-2xl font-semibold text-[#23443E]">
+                                OFFERING A
+                                <br />
+                                WELLNESS SERVICE?
+                            </h3>
 
-                                <h3 className="text-3xl font-bold text-[#143B35] uppercase">
-                                    Looking for a<br />Wellness Provider?
-                                </h3>
-                                <p className="text-gray-500 mt-4">
-                                    Be the first to access personalized
-                                    wellness services and exclusive offers.
-                                </p>
-                                <Link href={"/provider"}>
-                                    <button className="mt-8 bg-[#D9A548] hover:scale-105 transition text-white px-10 py-4 rounded-full shadow-lg">
-                                        Become a provider
-                                    </button></Link>
+                            <p className="mt-4 text-gray-500">
+                                Be the first to join as a verified provider and get early access to new clients.
+                            </p>
 
-                                <p className="text-sm text-gray-400 mt-4">
-                                    Quick application. We'll be in touch.
-                                </p>
-                            </div>
-                            <Image
-                                src="/mortar.svg"
-                                alt=""
-                                width={160}
-                                height={160}
-                                className="absolute bottom-0 left-0 opacity-100" />
-                            <Image
-                                src="/pebble.svg"
-                                alt=""
-                                width={190}
-                                height={120}
-                                className="absolute bottom-0 right-0 opacity-100" />
+                            <Link href="/professional">
+                                <button className="mt-8 rounded-full bg-[#D8A03B] px-8 py-4 text-white">
+                                    Become a Provider
+                                </button>
+                            </Link>
 
+                            <p className="mt-4 text-xs text-gray-400">
+                                ✓ Quick application. We'll be in touch.
+                            </p>
                         </div>
 
                     </div>
                 </div>
+
+                {/* Decorative Images */}
+
+                <Image
+                    src="/flower3.svg"
+                    alt=""
+                    width={170}
+                    height={170}
+                    className="pointer-events-none absolute bottom-0 left-0 hidden md:block"
+                />
+
+                <Image
+                    src="/grass.svg"
+                    alt=""
+                    width={150}
+                    height={110}
+                    className="pointer-events-none absolute bottom-0 left-8 hidden lg:block"
+                />
+
+                <Image
+                    src="/leaf-left.svg"
+                    alt=""
+                    width={160}
+                    height={160}
+                    className="pointer-events-none absolute bottom-0 right-24 hidden xl:block"
+                />
+
+                <Image
+                    src="/leaf-right.svg"
+                    alt=""
+                    width={180}
+                    height={180}
+                    className="pointer-events-none absolute bottom-0 right-0 hidden lg:block"
+                />
+
+                <Image
+                    src="/grass-right.svg"
+                    alt=""
+                    width={170}
+                    height={120}
+                    className="pointer-events-none absolute bottom-0 right-8 hidden lg:block"
+                />
 
             </section>
 
@@ -532,6 +741,7 @@ export default function Safety() {
 
                 </div>
             </footer>
+
 
         </main>
     );

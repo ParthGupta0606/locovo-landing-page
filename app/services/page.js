@@ -1,511 +1,673 @@
 "use client";
 
-import { motion } from "framer-motion";
+import { AnimatePresence, motion } from "framer-motion";
 import Image from "next/image";
 import Link from "next/link";
+import { useState } from "react";
+const navLinks = [
+  { href: "/", label: "Home" },
+  { href: "/about", label: "About" },
+  { href: "/how-it-works", label: "How it Works" },
+  { href: "/services", label: "Services" },
+  { href: "/customers", label: "For Customers" },
+  { href: "/professional", label: "For Professionals" },
+];
 
 export default function Services() {
+  const [menuOpen, setMenuOpen] = useState(false);
+  const faqs = [
+    {
+      question: "Which services will be available at launch?",
+      answer:
+        "Not yet. This is an early access website created to understand demand, build our community, and prepare for launch.",
+    },
+    {
+      question: "Can I request a service which is not available yet?",
+      answer:
+        "Professionals can apply early, complete verification, and prepare their profiles before the platform launches.",
+    },
+    {
+      question: "Will all services be available in every launch area?",
+      answer:
+        "Bookings are not available yet. Join the waitlist and we'll notify you as soon as Locovo launches in your city.",
+    },
+    {
+      question: "Are providers reviewed before they join Locovo?",
+      answer:
+        "Your application will be reviewed and you'll receive updates about verification and onboarding before launch.",
+    },
+    {
+      question: "Can I apply as a provider for one of these services?",
+      answer:
+        "Providers go through an identity and credential verification process before becoming available on Locovo.",
+    },
+  ];
+  const [openFAQ, setOpenFAQ] = useState(0);
   return (
-    <main className="min-h-screen bg-[#F9F7F2]">
+    <main className="min-h-screen overflow-x-hidden  bg-gradient-to-b from-[#F7F3EB] via-[#FCF8F2] to-[#FCF8F2]">
       <motion.nav
         initial={{ y: -30, opacity: 0 }}
         animate={{ y: 0, opacity: 1 }}
         transition={{ duration: 0.6 }}
-        className="relative z-[50] mx-auto max-w-7xl bg-white  rounded-full px-8 py-4 shadow-sm flex items-center justify-between">
-        <div className="text-2xl font-bold text-[#2B7A78]">
-          LOCOVO
-        </div>
-        <div className="hidden lg:flex gap-8 text-sm text-gray-700">
-          <Link href="/" className="hover:scale-110 transition-all duration-300"> Home </Link>
-          <Link href="/about" className="nav-link">About </Link>
-          <Link href="/how-it-works" className="hover:scale-110 transition-all duration-300">How it works</Link>
-          <Link href="/services" className="hover:scale-110 transition-all duration-300">Services</Link>
-          <Link href="/customers" className="hover:scale-110 transition-all duration-300">For Customers</Link>
-          <Link href="/professional" className="hover:scale-110 transition-all duration-300">For Professionals</Link>
-        </div>
-        <div className="hidden lg:flex gap-4">
-          <Link href={"/early-access"}>
-            <button className="px-5 py-2 rounded-full bg-[#2B7A78] text-white text-sm">
-              Join the waitlist
-            </button>
+        className="sticky top-4 z-50 mx-auto mt-4 w-[95%] max-w-7xl rounded-full bg-white shadow-md"
+      >
+        <div className="flex items-center justify-between px-5 py-4 lg:px-8">
+
+          {/* Logo */}
+
+          <Link href="/" className="flex items-center gap-3">
+
+            <Image
+              src="/logo.svg"
+              alt="Locovo"
+              width={40}
+              height={40}
+            />
+
+            <span className="text-2xl font-bold tracking-wide text-[#2B7A78]">
+              LOCOVO
+            </span>
+
           </Link>
-          <Link href={"/provider"}>
-            <button className="px-5 py-2 rounded-full bg-[#D8A44D] text-white text-sm">
-              Become a provider
-            </button>
-          </Link>
+
+          {/* Desktop Links */}
+
+          <div className="hidden lg:flex items-center gap-8">
+
+            {navLinks.map((link) => (
+
+              <Link
+                key={link.href}
+                href={link.href}
+                className={`transition duration-300 hover:text-[#2B7A78] ${link.href === "/how-it-works"
+                  ? "font-semibold text-[#2B7A78]"
+                  : "text-[#24423F]"
+                  }`}
+              >
+                {link.label}
+              </Link>
+
+            ))}
+
+          </div>
+
+          {/* Desktop Buttons */}
+
+          <div className="hidden lg:flex items-center gap-4">
+
+            <Link href="/customer">
+
+              <button className="rounded-full bg-[#2B7A78] px-6 py-3 text-white transition hover:scale-105">
+                Join Waitlist
+              </button>
+
+            </Link>
+
+            <Link href="/professional">
+
+              <button className="rounded-full bg-[#D8A44D] px-6 py-3 text-white transition hover:scale-105">
+                Become a Provider
+              </button>
+
+            </Link>
+
+          </div>
+
+          {/* Mobile Button */}
+
+          <button
+            onClick={() => setMenuOpen(!menuOpen)}
+            className="lg:hidden"
+            aria-label="Toggle navigation menu"
+          >
+
+            {menuOpen ? (
+
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                className="h-7 w-7"
+                fill="none"
+                viewBox="0 0 24 24"
+                stroke="currentColor"
+              >
+                <path
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  strokeWidth={2}
+                  d="M6 18L18 6M6 6l12 12"
+                />
+              </svg>
+
+            ) : (
+
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                className="h-7 w-7"
+                fill="none"
+                viewBox="0 0 24 24"
+                stroke="currentColor"
+              >
+                <path
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  strokeWidth={2}
+                  d="M4 6h16M4 12h16M4 18h16"
+                />
+              </svg>
+
+            )}
+
+          </button>
+
         </div>
+
+        {/* Mobile Menu */}
+
+        {menuOpen && (
+
+          <div className="border-t bg-white lg:hidden">
+
+            <div className="flex flex-col gap-5 p-6">
+
+              {navLinks.map((link) => (
+
+                <Link
+                  key={link.href}
+                  href={link.href}
+                  onClick={() => setMenuOpen(false)}
+                  className={`${link.href === "/how-it-works"
+                    ? "font-semibold text-[#2B7A78]"
+                    : "text-[#24423F]"
+                    }`}
+                >
+                  {link.label}
+                </Link>
+
+              ))}
+
+              <Link href="/customer">
+
+                <button className="w-full rounded-full bg-[#2B7A78] py-3 text-white">
+                  Join Waitlist
+                </button>
+
+              </Link>
+
+              <Link href="/professional">
+
+                <button className="w-full rounded-full bg-[#D8A44D] py-3 text-white">
+                  Become a Provider
+                </button>
+
+              </Link>
+
+            </div>
+
+          </div>
+
+        )}
+
       </motion.nav>
 
 
-      <section className="py-24  bg-gradient-to-b bg-[#F2E4D0] via-[#F7F3EB] to-white">
-        <div className="max-w-7xl mx-auto px-6">
+      <section className="relative overflow-hidden bg-gradient-to-b from-[#F7F3EB] via-[#FCF8F2] to-[#FCF8F2] py-20 sm:py-24 lg:py-32">
+
+        <div className="relative mx-auto max-w-7xl px-6 lg:px-8">
 
           {/* Heading */}
-          <div className="text-center max-w-3xl mx-auto">
-            <h2 className="text-5xl font-serif text-[#143B35]">
-              Explore upcoming at-home
+          <motion.div
+            initial={{ opacity: 0, y: 40 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.7 }}
+            className="mx-auto max-w-4xl text-center"
+          >
+
+            <span className="inline-flex rounded-full bg-[#F5E7CF] px-5 py-2 text-xs font-semibold uppercase tracking-[0.3em] text-[#C58C27]">
+              LOCOVO SERVICES
+            </span>
+
+            <h1 className="mt-8 font-serif text-4xl leading-tight text-[#143B35] sm:text-5xl lg:text-6xl xl:text-7xl">
+              Explore upcoming
               <br />
-              wellness services.
-            </h2>
+              at-home wellness
+              <br />
+              services.
+            </h1>
 
-            <p className="mt-6 text-gray-500">
-              We're building a marketplace for trusted wellness services,
-              delivered at home across selected Canadian regions
+            <p className="mx-auto mt-8 max-w-2xl text-base leading-8 text-gray-600 sm:text-lg">
+              We're building a trusted marketplace for wellness professionals,
+              bringing massage, beauty, skincare, and more directly to your
+              doorstep across selected Canadian regions.
             </p>
-          </div>
 
-          {/* Flower */}
-          <div className="flex justify-center my-8">
+            <div className="mt-10 flex flex-col items-center justify-center gap-4 sm:flex-row">
+
+              <Link href="/customer">
+                <button className="rounded-full bg-[#2B7A78] px-8 py-4 text-white transition duration-300 hover:scale-105">
+                  Join Early Access
+                </button>
+              </Link>
+
+              <Link href="/how-it-works">
+                <button className="rounded-full border border-[#143B35] px-8 py-4 text-[#143B35] transition duration-300 hover:bg-[#143B35] hover:text-white">
+                  Learn More
+                </button>
+              </Link>
+
+            </div>
+
+          </motion.div>
+
+          {/* Decorative Flower */}
+
+          <motion.div
+            initial={{ opacity: 0, scale: 0.8 }}
+            animate={{ opacity: 1, scale: 1 }}
+            transition={{ delay: 0.3, duration: 0.6 }}
+            className="mt-16 flex justify-center"
+          >
+
             <Image
-              src="/flower.svg"
-              alt=""
-              width={80}
-              height={80}
+              src="/flower-leaf.svg"
+              alt="Flower"
+              width={90}
+              height={90}
+              className="w-16 sm:w-70 lg:w-74 h-auto"
             />
-          </div>
 
-
-          {/* Services Grid */}
-          <div className="grid lg:grid-cols-4 gap-6 mt-12">
-
-            {/* Massage */}
-            <div className="bg-white rounded-[28px] p-8 shadow-sm border border-gray-200  transition-all duration-300 hover:bg-[#EEF2EE] hover:shadow-md hover:scale-[1.02]">
-
-              <div className="w-12 h-1 bg-[#2F8A82] rounded-full mb-6" />
-
-              <img
-                src="/massage.svg"
-                alt="Massage "
-                className="w-18 h-18"
-              />
-              <h3 className="text-3xl font-serif text-[#143B35]">
-                Massage Therapy
-              </h3>
-
-              <p className="mt-3 text-gray-500 text-sm">
-                Relaxation, recovery, and wellness-focused massage services at home.
-              </p>
-
-              <div className="h-px bg-gray-300 my-6" />
-
-              <div className="space-y-2">
-                {[
-                  "Registered massage therapist (RMT)",
-                  "Deep Tissue",
-                  "Swedish",
-                  "Prenatal",
-                  "Sports Massage",
-                  "Lymphatic Drainage",
-                ].map((item) => (
-                  <button
-                    key={item}
-                    className="group w-full flex items-center gap-3 px-3 py-2 rounded-full transition-all duration-300 hover:bg-white hover:shadow-md hover:scale-[1.02]"
-                  >
-                    <div className="w-6 h-6 rounded-full bg-[#2F8A82] text-white flex items-center justify-center text-xs transition-transform duration-300 group-hover:rotate-12">
-                      ✓
-                    </div>
-
-                    <span className="text-sm text-[#143B35]">
-                      {item}
-                    </span>
-                  </button>
-                ))}
-              </div>
-
-            </div>
-
-            {/* Beauty */}
-            <div className="bg-white rounded-[28px] p-8 shadow-sm border border-gray-200  transition-all duration-300 hover:bg-[#FFF8EC] hover:shadow-md hover:scale-[1.02]">
-
-              <div className="w-12 h-1 bg-[#D9A548] rounded-full mb-6" />
-
-              <img
-                src="/beauty.svg"
-                alt="Beauty "
-                className="w-15 h-15"
-              />
-              <h3 className="text-3xl font-serif text-[#143B35]">
-                Beauty Services
-              </h3>
-
-              <p className="mt-3 text-gray-500 text-sm">
-                Personal care and beauty treatments delivered with convenience.
-              </p>
-
-              <div className="h-px bg-gray-300 my-6" />
-
-              <div className="space-y-2">
-                {[
-                  "Makeup Artist",
-                  "Hair Stylist",
-                  "Blow Dry",
-                  "Bridal Makeup",
-                ].map((item) => (
-                  <button
-                    key={item}
-                    className="group w-full flex items-center gap-3 px-3 py-2 rounded-full transition-all duration-300 hover:bg-white hover:shadow-md hover:scale-[1.02]"
-                  >
-                    <div className="w-6 h-6 rounded-full bg-[#D9A548] text-white flex items-center justify-center text-xs transition-transform duration-300 group-hover:rotate-12">
-                      ✓
-                    </div>
-
-                    <span className="text-sm text-[#143B35]">
-                      {item}
-                    </span>
-                  </button>
-                ))}
-              </div>
-
-            </div>
-
-            {/* Nails */}
-            <div className="bg-white rounded-[28px] p-8 shadow-sm border border-gray-200  transition-all duration-300 hover:bg-[#F5F8EF] hover:shadow-md hover:scale-[1.02]">
-
-              <div className="w-12 h-1 bg-[#A6B68A] rounded-full mb-6" />
-
-              <img
-                src="/nails(2).svg"
-                alt="Nails "
-                className="w-15 h-15"
-              />
-              <h3 className="text-3xl font-serif text-[#143B35]">
-                Nails
-              </h3>
-
-              <p className="mt-3 text-gray-500 text-sm">
-                Convenient nail care services from experienced professionals.
-              </p>
-
-              <div className="h-px bg-gray-300 my-6" />
-
-              <div className="space-y-2">
-                {[
-                  "Manicure",
-                  "Pedicure",
-                  "Gel Nails",
-                ].map((item) => (
-                  <button
-                    key={item}
-                    className="group w-full flex items-center gap-3 px-3 py-2 rounded-full transition-all duration-300 hover:bg-white hover:shadow-md hover:scale-[1.02]"
-                  >
-                    <div className="w-6 h-6 rounded-full bg-[#A6B68A] text-white flex items-center justify-center text-xs transition-transform duration-300 group-hover:rotate-12">
-                      ✓
-                    </div>
-
-                    <span className="text-sm text-[#143B35]">
-                      {item}
-                    </span>
-                  </button>
-                ))}
-              </div>
-
-            </div>
-
-            {/* Skincare */}
-            <div className="bg-white rounded-[28px] p-8 shadow-sm border border-gray-200  transition-all duration-300 hover:bg-[#EEF7F6] hover:shadow-md hover:scale-[1.02]">
-
-              <div className="w-12 h-1 bg-[#2F8A82] rounded-full mb-6" />
-
-              <img
-                src="/skincare.svg"
-                alt="Skincare "
-                className="w-15 h-15"
-              />
-              <h3 className="text-3xl font-serif text-[#143B35]">
-                Skincare
-              </h3>
-
-              <p className="mt-3 text-gray-500 text-sm">
-                At-home skincare treatments focused on comfort and self care.
-              </p>
-
-              <div className="h-px bg-gray-300 my-6" />
-
-              <div className="space-y-2">
-                {[
-                  "Facial",
-                  "Hydra Facial",
-                ].map((item) => (
-                  <button
-                    key={item}
-                    className="group w-full flex items-center gap-3 px-3 py-2 rounded-full transition-all duration-300 hover:bg-white hover:shadow-md hover:scale-[1.02]"
-                  >
-                    <div className="w-6 h-6 rounded-full bg-[#2F8A82] text-white flex items-center justify-center text-xs transition-transform duration-300 group-hover:rotate-12">
-                      ✓
-                    </div>
-
-                    <span className="text-sm text-[#143B35]">
-                      {item}
-                    </span>
-                  </button>
-                ))}
-              </div>
-
-            </div>
-
-          </div>
+          </motion.div>
 
         </div>
+
       </section>
 
       {/* What To Expect */}
-      <section className="max-w-7xl mx-auto mt-16 px-6">
+      <section className="w-full bg-[#F9F7F2] py-16 sm:py-20 lg:py-24">
+        <div className="mx-auto w-full max-w-7xl px-5 sm:px-8 lg:px-10">
 
-        <div className="bg-[#F8F3EC] border border-[#E5D8C5] rounded-[28px] p-10 shadow-sm">
+          {/* Main Card */}
 
-          <div className="grid lg:grid-cols-4 gap-8 items-start">
+          <div className="rounded-[28px] border border-[#E5D8C5] bg-[#F8F3EC] p-6 shadow-sm sm:p-8 lg:p-12">
 
-            {/* Left */}
+            <div className="grid grid-cols-1 gap-10 lg:grid-cols-4">
+
+              {/* Left */}
+
+              <div className="lg:pr-6">
+
+                <h2 className="font-serif text-3xl text-[#143B35] sm:text-4xl lg:text-5xl">
+                  What to expect?
+                </h2>
+
+                <p className="mt-5 leading-7 text-gray-600">
+                  Our goal is to make wellness at home simple,
+                  trustworthy and convenient.
+                </p>
+
+                <div className="my-6 h-px bg-[#D8CDBF]" />
+
+                <p className="text-sm text-gray-500">
+                  ⓘ Initial availability may vary by launch area.
+                </p>
+
+              </div>
+
+              {/* Feature 1 */}
+
+              <div className="border-t border-[#D8CDBF] pt-8 text-center lg:border-l lg:border-t-0 lg:pl-8 lg:pt-0">
+
+                <Image
+                  src="/Approve.svg"
+                  alt="Verification"
+                  width={56}
+                  height={56}
+                  className="mx-auto"
+                />
+
+                <h3 className="mt-5 text-xl font-semibold text-[#143B35]">
+                  Verification First
+                </h3>
+
+                <p className="mt-3 leading-7 text-gray-600">
+                  Every professional is carefully reviewed
+                  before joining the platform.
+                </p>
+
+              </div>
+
+              {/* Feature 2 */}
+
+              <div className="border-t border-[#D8CDBF] pt-8 text-center lg:border-l lg:border-t-0 lg:pl-8 lg:pt-0">
+
+                <Image
+                  src="/Location.svg"
+                  alt="City Coverage"
+                  width={56}
+                  height={56}
+                  className="mx-auto"
+                />
+
+                <h3 className="mt-5 text-xl font-semibold text-[#143B35]">
+                  City-by-city Rollout
+                </h3>
+
+                <p className="mt-3 leading-7 text-gray-600">
+                  We launch gradually to ensure quality,
+                  trust and availability.
+                </p>
+
+              </div>
+
+              {/* Feature 3 */}
+
+              <div className="border-t border-[#D8CDBF] pt-8 text-center lg:border-l lg:border-t-0 lg:pl-8 lg:pt-0">
+
+                <Image
+                  src="/House.svg"
+                  alt="Home Service"
+                  width={56}
+                  height={56}
+                  className="mx-auto"
+                />
+
+                <h3 className="mt-5 text-xl font-semibold text-[#143B35]">
+                  At-home Convenience
+                </h3>
+
+                <p className="mt-3 leading-7 text-gray-600">
+                  Wellness professionals come to you,
+                  making appointments easy and comfortable.
+                </p>
+
+              </div>
+
+            </div>
+
+          </div>
+
+          {/* Future Services */}
+
+          <div className="mt-14 grid grid-cols-1 items-center gap-10 lg:grid-cols-2">
+
             <div>
-              <h2 className="text-5xl font-serif text-[#143B35]">
-                What to expect?
-              </h2>
 
-              <p className="mt-4 text-gray-500">
-                Our goal is to make wellness at home simple,
-                trustworthy and convenient.
-              </p>
-
-              <div className="h-px bg-[#D8CDBF] my-5"></div>
-
-              <p className="text-xs text-gray-400">
-                ⓘ Initial availability may vary by launch area.
-              </p>
-            </div>
-
-            {/* Verification */}
-            <div className="text-center border-l border-[#D8CDBF] pl-6">
-
-              <img src="/Approve.svg" alt="" />
-
-              <h3 className="font-semibold text-[#143B35] mt-4">
-                Verification First
+              <h3 className="font-serif text-3xl text-[#143B35] sm:text-4xl">
+                Future services we may add
               </h3>
 
-              <p className="text-sm text-gray-500 mt-2">
-                Every professional is carefully reviewed
-                for your peace of mind.
+              <p className="mt-5 max-w-xl leading-8 text-gray-600">
+                Additional wellness categories may be added over
+                time based on community demand, provider
+                availability and regional requirements.
               </p>
+
             </div>
 
-            {/* Rollout */}
-            <div className="text-center border-l border-[#D8CDBF] pl-6">
+            <div className="flex flex-wrap justify-center gap-4 lg:justify-end">
 
-              <img src="/Location.svg" alt="" />
+              {[
+                "Physiotherapy",
+                "Chiropractic",
+                "Acupuncture",
+                "Personal Trainers",
+                "Yoga Instructors",
+              ].map((service) => (
+                <button
+                  key={service}
+                  className="rounded-full border bg-white px-6 py-3 text-sm shadow-sm transition duration-300 hover:-translate-y-1 hover:shadow-md"
+                >
+                  {service}
+                </button>
+              ))}
 
-              <h3 className="font-semibold text-[#143B35] mt-4">
-                City-by-city rollout
-              </h3>
-
-              <p className="text-sm text-gray-500 mt-2">
-                We launch in selected cities to ensure
-                quality and trust.
-              </p>
             </div>
 
-            {/* Convenience */}
-            <div className="text-center border-l border-[#D8CDBF] pl-6">
-
-              <img src="/House.svg" alt="" />
-
-              <h3 className="font-semibold text-[#143B35] mt-4">
-                At-home convenience
-              </h3>
-
-              <p className="text-sm text-gray-500 mt-2">
-                Convenient, professional care in
-                the comfort of your home.
-              </p>
-            </div>
-
-          </div>
-        </div>
-
-        {/* Future Services */}
-        <div className="grid lg:grid-cols-2 gap-8 mt-10 items-center">
-
-          <div>
-            <h3 className="text-3xl font-serif text-[#143B35]">
-              Future services we may add
-            </h3>
-
-            <p className="text-gray-500 mt-4">
-              Additional categories may be added over time
-              based on demand, provider availability,
-              and regional requirements.
-            </p>
-          </div>
-
-          <div className="flex flex-wrap justify-center gap-4">
-
-            {[
-              "Physiotherapy",
-              "Chiropractic",
-              "Acupuncture",
-              "Personal Trainers",
-              "Yoga Instructors",
-            ].map((service) => (
-              <button
-                key={service}
-                className="
-            px-8 py-3
-            bg-white
-            rounded-full
-            border
-            shadow-sm
-            hover:shadow-md
-            hover:-translate-y-1
-            transition-all
-          "
-              >
-                {service}
-              </button>
-            ))}
           </div>
 
         </div>
-
       </section>
 
-      <section className="py-24 mt-16"
+      <section
+        className="relative w-full overflow-hidden py-16 sm:py-20 lg:py-24"
         style={{
           backgroundImage: "url('/bg.svg')",
           backgroundRepeat: "repeat",
           backgroundSize: "33.33% auto",
-        }}>
+        }}
+      >
+        {/* Background Decoration */}
 
-        <div className="max-w-4xl mx-auto px-6">
-          <h2 className="text-center text-5xl font-serif text-[#143B35] mb-12">
-            Questions, answered.
-          </h2>
+        <div
+          className="absolute inset-0 pointer-events-none opacity-10"
+          style={{
+            backgroundImage: "url('/leaf-top-left.svg')",
+            backgroundRepeat: "repeat",
+            backgroundSize: "250px",
+          }}
+        />
+
+        <div className="relative mx-auto w-full max-w-4xl px-5 sm:px-8 lg:px-10">
+
+          {/* Heading */}
+
+          <div className="mb-12 text-center">
+
+            <div className="mb-4 flex items-center justify-center gap-3">
+
+              <div className="h-[3px] w-12 rounded-full bg-[#E8A04A]" />
+
+              <p className="text-xs uppercase tracking-[0.45em] text-[#8BA18E]">
+                FAQ
+              </p>
+
+            </div>
+
+            <h2 className="font-serif text-3xl text-[#143B35] sm:text-4xl lg:text-5xl">
+              Questions, answered.
+            </h2>
+
+          </div>
+
+          {/* FAQ Cards */}
+
           <div className="space-y-4">
-            <details className="bg-white rounded-2xl p-6">
-              <summary className="cursor-pointer font-medium">
-                What types of wellness services are available?
-              </summary>
-              <p className="mt-4 text-gray-600">
-                Massage therapy, yoga, fitness coaching, nutrition and more.
-              </p>
-            </details>
 
-            <details className="bg-white rounded-2xl p-6">
-              <summary className="cursor-pointer font-medium">
-                How does booking work?
-              </summary>
+            {faqs.map((faq, index) => (
 
-              <p className="mt-4 text-gray-600">
-                Choose a provider, select a time slot and confirm your booking.
-              </p>
-            </details>
+              <motion.div
+                key={index}
+                layout
+                className="overflow-hidden rounded-2xl bg-white shadow-sm"
+              >
 
-            <details className="bg-white rounded-2xl p-6">
-              <summary className="cursor-pointer font-medium">
-                Are providers verified?
-              </summary>
+                <button
+                  onClick={() =>
+                    setOpenFAQ(openFAQ === index ? -1 : index)
+                  }
+                  className="flex w-full items-center justify-between gap-4 p-6 text-left"
+                >
 
-              <p className="mt-4 text-gray-600">
-                Yes. All professionals go through a verification process.
-              </p>
-            </details>
+                  <span className="text-base font-medium text-[#143B35] sm:text-lg">
+                    {faq.question}
+                  </span>
+
+                  <motion.span
+                    animate={{
+                      rotate: openFAQ === index ? 45 : 0,
+                    }}
+                    transition={{ duration: 0.25 }}
+                    className="shrink-0 text-3xl font-light text-[#2B7A78]"
+                  >
+                    +
+                  </motion.span>
+
+                </button>
+
+                <AnimatePresence>
+
+                  {openFAQ === index && (
+
+                    <motion.div
+                      initial={{ height: 0, opacity: 0 }}
+                      animate={{
+                        height: "auto",
+                        opacity: 1,
+                      }}
+                      exit={{
+                        height: 0,
+                        opacity: 0,
+                      }}
+                      transition={{ duration: 0.3 }}
+                      className="overflow-hidden"
+                    >
+
+                      <div className="px-6 pb-6">
+
+                        <p className="leading-8 text-gray-600">
+                          {faq.answer}
+                        </p>
+
+                      </div>
+
+                    </motion.div>
+
+                  )}
+
+                </AnimatePresence>
+
+              </motion.div>
+
+            ))}
 
           </div>
 
         </div>
       </section>
 
-      <section className="py-24 bg-[#F7F3EB]">
-        <div className="max-w-7xl mx-auto px-6">
-          <div className="bg-[#F8F3EC] rounded-[32px] p-12 relative overflow-hidden">
-            {/* Heading */}
+      <section className="relative overflow-hidden rounded-t-3xl bg-[#F8F6F1] py-20">
+
+        <div className="relative z-10 mx-auto max-w-5xl px-6 text-center">
+          <h2 className="font-serif text-4xl leading-tight text-[#23443E] sm:text-5xl">
+            Wellness, your way.
+            <br />
+            Coming soon.
+          </h2>
+
+          <p className="mx-auto mt-5 max-w-lg text-gray-500">
+            Personalized wellness services at home and exclusive experiences at premium destinations.
+          </p>
+        </div>
+
+        <div className="relative z-10 mx-auto mt-16 max-w-5xl px-6">
+          <div className="grid grid-cols-1 gap-12 lg:grid-cols-[1fr_auto_1fr] lg:items-center">
+
+            {/* Customer */}
             <div className="text-center">
-              <h2 className="text-5xl md:text-6xl font-serif text-[#143B35] leading-tight">
-                Wellness, your way.<br />Coming soon.
-              </h2>
-              <p className="text-gray-500 mt-6 max-w-xl mx-auto">
-                Personalized wellness services at home and
-                exclusive experiences at premium destinations.
+              <div className="mx-auto mb-6 flex h-14 w-14 items-center justify-center rounded-full bg-[#E9F0E9]">
+                <img src="/human-icon.svg" alt="" />
+              </div>
+
+              <h3 className="text-2xl font-semibold text-[#23443E]">
+                LOOKING FOR A
+                <br />
+                WELLNESS SERVICE?
+              </h3>
+
+              <p className="mt-4 text-gray-500">
+                Be the first to access personalized wellness services and exclusive offers.
+              </p>
+
+              <Link href="/customer">
+                <button className="mt-8 rounded-full bg-[#2A746A] px-8 py-4 text-white">
+                  Join Early Access
+                </button>
+              </Link>
+
+              <p className="mt-4 text-xs text-gray-400">
+                ✓ No spam. Just updates that matter.
               </p>
             </div>
-            {/* Content */}
-            <div className="grid md:grid-cols-2 mt-20 relative">
-              {/* Divider */}
-              <div className="hidden md:block absolute left-1/2 top-0 bottom-0 w-px bg-gray-300 -translate-x-1/2">
-                <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-12 h-12 rounded-full bg-white border flex items-center justify-center text-sm">
-                  OR
-                </div>
+
+            {/* Divider */}
+            <div className="hidden lg:flex flex-col items-center">
+              <div className="h-40 w-px bg-[#CFC8BC]" />
+              <div className="flex h-10 w-10 items-center justify-center rounded-full border bg-white text-xs">
+                OR
               </div>
-              {/* Left */}
-              <div className="text-center px-10">
-                <div className="w-20 h-20 mx-auto rounded-full bg-[#E8F1E7] flex items-center justify-center mb-6">
-                  <img
-                    src="/wellness.svg"
-                    alt=""
-                    className="w-16 h-16"
-                  />
-                </div>
-                <h3 className="text-3xl font-bold text-[#143B35] uppercase">
-                  Looking for a<br />Wellness Service?
-                </h3>
-                <p className="text-gray-500 mt-4">
-                  Be the first to access personalized
-                  wellness services and exclusive offers.
-                </p>
-                <Link href={"/early-access"}>
-                  <button className="mt-8 bg-[#2F7D74] hover:scale-105 transition text-white px-10 py-4 rounded-full shadow-lg">
-                    Join early access
-                  </button>
-                </Link>
-                <p className="text-sm text-gray-400 mt-4">
-                  No spam. Just updates that matter.
-                </p>
+              <div className="h-40 w-px bg-[#CFC8BC]" />
+            </div>
+
+            {/* Provider */}
+            <div className="text-center">
+              <div className="mx-auto mb-6 flex h-14 w-14 items-center justify-center rounded-full bg-[#F8E9C9]">
+                <img src="/suitcase.svg" alt="" />
               </div>
 
-              {/* Right */}
-              <div className="text-center px-10 mt-12 md:mt-0">
-                <div className="w-20 h-20 mx-auto rounded-full bg-[#F6E7C6] flex items-center justify-center mb-6">
-                  <img
-                    src="/provider.svg"
-                    alt=""
-                    className="w-14 h-14"
-                  />
-                </div>
+              <h3 className="text-2xl font-semibold text-[#23443E]">
+                OFFERING A
+                <br />
+                WELLNESS SERVICE?
+              </h3>
 
-                <h3 className="text-3xl font-bold text-[#143B35] uppercase">
-                  Looking for a<br />Wellness Provider?
-                </h3>
-                <p className="text-gray-500 mt-4">
-                  Be the first to access personalized
-                  wellness services and exclusive offers.
-                </p>
+              <p className="mt-4 text-gray-500">
+                Be the first to join as a verified provider and get early access to new clients.
+              </p>
 
-                <Link href={"/provider"}>
-                  <button className="mt-8 bg-[#D9A548] hover:scale-105 transition text-white px-10 py-4 rounded-full shadow-lg">
-                    Become a provider
-                  </button>
-                </Link>
+              <Link href="/professional">
+                <button className="mt-8 rounded-full bg-[#D8A03B] px-8 py-4 text-white">
+                  Become a Provider
+                </button>
+              </Link>
 
-                <p className="text-sm text-gray-400 mt-4">
-                  Quick application. We'll be in touch.
-                </p>
-              </div>
-              <Image
-                src="/mortar.svg"
-                alt=""
-                width={160}
-                height={160}
-                className="absolute bottom-0 left-0 opacity-100" />
-              <Image
-                src="/pebble.svg"
-                alt=""
-                width={190}
-                height={120}
-                className="absolute bottom-0 right-0 opacity-100" />
-
+              <p className="mt-4 text-xs text-gray-400">
+                ✓ Quick application. We'll be in touch.
+              </p>
             </div>
 
           </div>
         </div>
+
+        {/* Decorative Images */}
+
+        <Image
+          src="/flower3.svg"
+          alt=""
+          width={170}
+          height={170}
+          className="pointer-events-none absolute bottom-0 left-0 hidden md:block"
+        />
+
+        <Image
+          src="/grass.svg"
+          alt=""
+          width={150}
+          height={110}
+          className="pointer-events-none absolute bottom-0 left-8 hidden lg:block"
+        />
+
+        <Image
+          src="/leaf-left.svg"
+          alt=""
+          width={160}
+          height={160}
+          className="pointer-events-none absolute bottom-0 right-24 hidden xl:block"
+        />
+
+        <Image
+          src="/leaf-right.svg"
+          alt=""
+          width={180}
+          height={180}
+          className="pointer-events-none absolute bottom-0 right-0 hidden lg:block"
+        />
+
+        <Image
+          src="/grass-right.svg"
+          alt=""
+          width={170}
+          height={120}
+          className="pointer-events-none absolute bottom-0 right-8 hidden lg:block"
+        />
 
       </section>
 
